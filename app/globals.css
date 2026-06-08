@@ -1,26 +1,110 @@
 @import "tailwindcss";
 
+/* Override default variables for wireframe */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+  --card-bg: #ffffff;
+  --card-border: #000000;
+  --accent-orange: #000000;
+  --accent-orange-hover: #333333;
+  --steel-slate: #ffffff;
+  --steel-light: #666666;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-orange-hover: var(--accent-orange-hover);
+  --color-steel-slate: var(--steel-slate);
+  --color-steel-light: var(--steel-light);
+  --font-sans: var(--font-outfit), var(--font-geist-sans), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* --- WIREFRAME STYLES OVERRIDE --- */
+
+/* Reset all colors to black and white, remove shadows and backgrounds */
+* {
+  background-color: transparent !important;
+  color: black !important;
+  border-color: black !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  background-image: none !important;
 }
 
+/* Body gets the white background */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: white !important;
+  font-family: monospace, var(--font-sans) !important;
+  overflow-x: hidden;
+}
+
+/* Show structure with borders */
+div, section, article, nav, header, footer {
+  border: 1px dashed rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Interactive elements get solid borders */
+button, a, input, textarea, select {
+  border: 1px solid black !important;
+  border-radius: 0 !important; /* Square corners for wireframe feel */
+  text-decoration: none !important;
+}
+
+/* Specific elements that need to look like boxes */
+.glass-panel, .glass-panel-accent {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 2px solid black !important;
+}
+
+/* Images as placeholders */
+img {
+  filter: grayscale(100%) contrast(200%) brightness(150%) !important;
+  opacity: 0.6 !important;
+  border: 1px solid black !important;
+}
+
+/* Icons */
+svg {
+  stroke: black !important;
+  fill: none !important;
+}
+svg * {
+  stroke: black !important;
+}
+
+/* Hide decorative elements that don't make sense in wireframe */
+.bg-gradient-to-t,
+.bg-gradient-to-r,
+.bg-gradient-to-l,
+.bg-gradient-to-tr,
+.blur-xl,
+.blur-\[120px\],
+.blur-\[100px\],
+.pointer-events-none.absolute {
+  display: none !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: white !important;
+  border-left: 1px solid black !important;
+}
+::-webkit-scrollbar-thumb {
+  background: white !important;
+  border: 1px solid black !important;
+  border-radius: 0 !important;
+}
+
+html {
+  scroll-behavior: smooth;
 }
