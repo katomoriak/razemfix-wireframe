@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import {
   Search,
@@ -29,7 +29,7 @@ interface Product {
   sizes: string[];
 }
 
-export default function Produtos() {
+function ProdutosContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const catParam = searchParams.get("cat");
@@ -758,5 +758,13 @@ export default function Produtos() {
       </div>
 
     </div>
+  );
+}
+
+export default function Produtos() {
+  return (
+    <Suspense fallback={<div className="min-h-screen grid-bg flex items-center justify-center"><div className="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+      <ProdutosContent />
+    </Suspense>
   );
 }
