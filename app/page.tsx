@@ -111,7 +111,7 @@ export default function Home() {
               
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
                 Distribuidor de Parafusos, <br className="hidden sm:inline" />
-                <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-amber-500 bg-clip-text text-transparent">
+                <span className="font-extrabold text-black">
                   Porcas e Arruelas
                 </span> <br />
                 para Fixação Industrial
@@ -153,7 +153,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-amber-500/5 rounded-2xl blur-xl" />
               <div className="border border-white/10 rounded-2xl p-4 glass-panel relative">
                 <div className="absolute top-2 right-4 text-[9px] font-mono text-slate-500 z-10 bg-black/50 px-2 rounded">SYS_VIEW_01 // SEC_BLUEPRINT</div>
-                <Image src="/industrial_fasteners.png" width={600} height={400} alt="Fixadores Industriais" className="w-full h-auto drop-shadow-2xl rounded-xl object-cover" />
+                <img src="https://placehold.co/600x400" alt="Fixadores Industriais" className="w-full h-auto drop-shadow-2xl rounded-xl object-cover" />
               </div>
             </div>
 
@@ -215,7 +215,7 @@ export default function Home() {
               <div className="border border-white/10 rounded-2xl overflow-hidden glass-panel relative group">
                 <div className="absolute top-3 left-4 text-[9px] font-mono text-slate-500 z-10 bg-black/50 px-2 rounded">INFRASTRUCTURE_MODULE // RAW_STOCK_3D</div>
                 <div className="aspect-[4/3] bg-slate-900/50 relative overflow-hidden">
-                  <Image src="/stock_warehouse.png" fill alt="Estoque Razemfix" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <img src="https://placehold.co/800x600" alt="Estoque Razemfix" className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" />
                 </div>
                 {/* Visual Label overlay */}
                 <div className="absolute bottom-4 left-4 right-4 bg-slate-950/90 border border-white/10 rounded-lg p-3 backdrop-blur-md flex items-center justify-between">
@@ -478,7 +478,7 @@ export default function Home() {
                 
                 {/* Background Image Deco */}
                 <div className="absolute inset-0 opacity-20 pointer-events-none overflow-hidden rounded-2xl">
-                  <Image src="/technical_drawing_fasteners.png" fill alt="Consultoria Técnica" className="object-cover" />
+                  <img src="https://placehold.co/400x400" alt="Consultoria Técnica" className="object-cover w-full h-full" />
                 </div>
 
                 <div className="space-y-2 relative z-10">
