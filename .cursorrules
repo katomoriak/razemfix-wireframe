@@ -1,0 +1,23 @@
+# Agent Guidelines for Windows Command Execution
+
+To prevent the terminal and agent interface from freezing/hanging, you MUST adhere to the following rules when executing commands:
+
+## 1. Git Commands (Prevent Paging and Interaction)
+- NEVER run git commands that trigger a pager (e.g., `git diff`, `git log`, `git show`, `git branch`).
+- ALWAYS prefix git commands with `--no-pager` or set the temporary config `core.pager=cat`.
+  - CORRECT: `git --no-pager diff` or `git -c core.pager=cat log`
+  - INCORRECT: `git diff`
+- NEVER run `git commit` without a message. Always provide the `-m` flag.
+  - CORRECT: `git commit -m "commit message"`
+  - INCORRECT: `git commit`
+- Do not run commands that require interactive credentials (e.g. `git pull` or `git push` if SSH keys/credentials are not pre-authenticated).
+
+## 2. Long-Running Processes (Dev Servers)
+- When starting development servers or daemons (like `npm run dev`, `vite`, `next dev`):
+  - You MUST run them asynchronously.
+  - Configure `WaitMsBeforeAsync` to a small value (e.g., `1000` or `2000`) so the command runner registers the initial output and immediately puts the task in the background, releasing the terminal lock.
+  - Do NOT run them synchronously or with long wait times.
+
+## 3. General Commands
+- Never execute commands that start interactive subshells or wait for user stdin.
+- Ensure all subprocesses are non-interactive.

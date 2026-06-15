@@ -1,111 +1,225 @@
 @import "tailwindcss";
 
-/* Override default variables for wireframe */
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
-  --card-bg: #ffffff;
-  --card-border: #000000;
-  --accent-orange: #000000;
-  --accent-orange-hover: #333333;
-  --steel-slate: #ffffff;
-  --steel-light: #666666;
+  /* Brand Colors */
+  --parchment: #F8F6F1;
+  --dim-grey: #6C6C6D;
+  --silver: #A5A39D;
+  --white: #FEFEFE;
+  --tuscan-sun: #EFC94E;
+
+  /* Semantic Theme Variables */
+  --background: var(--parchment);
+  --foreground: #18181b; /* Limited black for technical readability and contrast */
+  --card-bg: var(--white);
+  --card-border: var(--silver);
+  --accent-yellow: var(--tuscan-sun);
+  --accent-yellow-hover: #dbb53a; /* Darker variant of Tuscan Sun for hover states */
+  --steel-slate: var(--parchment);
+  --steel-light: var(--dim-grey);
 }
 
 @theme inline {
+  --color-parchment: var(--parchment);
+  --color-dim-grey: var(--dim-grey);
+  --color-silver: var(--silver);
+  --color-white: var(--white);
+  --color-tuscan-sun: var(--tuscan-sun);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card-bg: var(--card-bg);
   --color-card-border: var(--card-border);
-  --color-accent-orange: var(--accent-orange);
-  --color-accent-orange-hover: var(--accent-orange-hover);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-yellow-hover: var(--accent-yellow-hover);
   --color-steel-slate: var(--steel-slate);
   --color-steel-light: var(--steel-light);
-  --font-sans: var(--font-outfit), var(--font-geist-sans), sans-serif;
+  --font-sans: var(--font-raleway), sans-serif;
 }
 
-/* --- WIREFRAME STYLES OVERRIDE --- */
-
-/* Reset all colors to black and white, remove shadows and backgrounds */
-* {
-  background-color: transparent !important;
-  color: black !important;
-  -webkit-text-fill-color: black !important;
-  border-color: black !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  background-image: none !important;
-}
-
-/* Body gets the white background */
+/* Base resets & layout settings */
 body {
-  background-color: white !important;
-  font-family: monospace, var(--font-sans) !important;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
   overflow-x: hidden;
-}
-
-/* Show structure with borders */
-section, article, nav, header, footer, main {
-  border: 1px dashed rgba(0, 0, 0, 0.2) !important;
-}
-
-/* Interactive elements get solid borders */
-button, a, input, textarea, select {
-  border: 1px solid black !important;
-  border-radius: 0 !important; /* Square corners for wireframe feel */
-  text-decoration: none !important;
-}
-
-/* Specific elements that need to look like boxes */
-.glass-panel, .glass-panel-accent {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: 2px solid black !important;
-}
-
-/* Images as placeholders */
-img {
-  filter: grayscale(100%) contrast(200%) brightness(150%) !important;
-  opacity: 0.6 !important;
-  border: 1px solid black !important;
-}
-
-/* Icons */
-svg {
-  stroke: black !important;
-  fill: none !important;
-}
-svg * {
-  stroke: black !important;
-}
-
-/* Hide decorative elements that don't make sense in wireframe */
-.bg-gradient-to-t,
-.bg-gradient-to-r,
-.bg-gradient-to-l,
-.bg-gradient-to-tr,
-.blur-xl,
-.blur-\[120px\],
-.blur-\[100px\],
-.pointer-events-none.absolute {
-  display: none !important;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: white !important;
-  border-left: 1px solid black !important;
-}
-::-webkit-scrollbar-thumb {
-  background: white !important;
-  border: 1px solid black !important;
-  border-radius: 0 !important;
 }
 
 html {
   scroll-behavior: smooth;
 }
+
+/* Glass panel - light industrial version */
+.glass-panel {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid var(--card-border) !important;
+}
+
+.glass-panel-accent {
+  background-color: rgba(239, 201, 78, 0.05) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(239, 201, 78, 0.3) !important;
+}
+
+/* Technical Blueprint Grid background for light theme */
+.grid-bg {
+  position: relative;
+  background-color: var(--background);
+}
+.grid-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(to right, rgba(24, 24, 27, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(24, 24, 27, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+}
+
+/* Technical Hexagon Grid background for Hero section */
+.hex-bg {
+  position: relative;
+}
+/* Layer 1: Thin Hexagons (Base) */
+.hex-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0 L56 16.16 L56 48.5 L28 64.66 L0 48.5 L0 16.16 Z M28 64.66 L28 97' fill='none' stroke='rgba(24, 24, 27, 0.08)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 56px 97px;
+  -webkit-mask-image: radial-gradient(circle 280px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, rgba(0, 0, 0, 0.22) 100%);
+  mask-image: radial-gradient(circle 280px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, rgba(0, 0, 0, 0.22) 100%);
+}
+/* Layer 2: Thick Hexagons (Visible close to the cursor/click) */
+.hex-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0 L56 16.16 L56 48.5 L28 64.66 L0 48.5 L0 16.16 Z M28 64.66 L28 97' fill='none' stroke='rgba(24, 24, 27, 0.12)' stroke-width='2.2'/%3E%3C/svg%3E");
+  background-size: 56px 97px;
+  -webkit-mask-image: radial-gradient(circle 120px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+  mask-image: radial-gradient(circle 120px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+}
+/* Click Interaction: Expand the thick lines radius on click */
+.hex-bg:active::after {
+  -webkit-mask-image: radial-gradient(circle 220px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+  mask-image: radial-gradient(circle 220px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 0%, transparent 100%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f4f4f5;
+  border-left: 1px solid #e4e4e7;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border: 1px solid #e4e4e7;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+
+/* Floating animation for transparent hero assets */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(0.5deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Mechanical/industrial piston-screw float animation */
+@keyframes mechanical-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    /* Smooth vertical lift and mechanical unscrewing rotation */
+    transform: translateY(-22px) rotate(-3.5deg);
+  }
+}
+
+.animate-mechanical-float {
+  animation: mechanical-float 9s ease-in-out infinite;
+}
+
+
+/* Slow rotation animations for background blueprint hexagons */
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-slow-spin {
+  animation: slow-spin 180s linear infinite;
+}
+
+@keyframes slow-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-slow-spin-reverse {
+  animation: slow-spin-reverse 220s linear infinite;
+}
+
+/* Infinite horizontal marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 60s linear infinite;
+}
+
+/* Pulse-glow effect for premium buttons */
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}/* Custom hexagon path animation for quality cards */
+.card-hexagon-path {
+  stroke-width: 1.5;
+  transition: stroke-width 0.5s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.5s ease;
+}
+.group:hover .card-hexagon-path {
+  stroke-width: 4.0;
+}
+

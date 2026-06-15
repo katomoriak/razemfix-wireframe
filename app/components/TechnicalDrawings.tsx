@@ -12,7 +12,7 @@ export function WarehouseSVG({ className = "" }: { className?: string }) {
       {/* Background grid */}
       <defs>
         <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(249, 115, 22, 0.05)" strokeWidth="0.5" />
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(239, 201, 78, 0.05)" strokeWidth="0.5" />
         </pattern>
       </defs>
       <rect width="100%" height="100%" fill="url(#grid)" rx="8" />
@@ -23,7 +23,7 @@ export function WarehouseSVG({ className = "" }: { className?: string }) {
 
       {/* Isometric Shelving Units */}
       {/* Shelf 1 (Left) */}
-      <g stroke="rgba(249, 115, 22, 0.4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <g stroke="rgba(239, 201, 78, 0.4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         {/* Vertical pillars */}
         <line x1="120" y1="80" x2="120" y2="300" />
         <line x1="180" y1="110" x2="180" y2="330" />
@@ -38,21 +38,21 @@ export function WarehouseSVG({ className = "" }: { className?: string }) {
         <path d="M 120 240 L 180 270 L 240 240" />
 
         {/* Shelf back support cross */}
-        <line x1="120" y1="120" x2="240" y2="180" stroke="rgba(249, 115, 22, 0.15)" strokeWidth="1" />
-        <line x1="240" y1="120" x2="120" y2="180" stroke="rgba(249, 115, 22, 0.15)" strokeWidth="1" />
-        <line x1="120" y1="180" x2="240" y2="240" stroke="rgba(249, 115, 22, 0.15)" strokeWidth="1" />
-        <line x1="240" y1="180" x2="120" y2="240" stroke="rgba(249, 115, 22, 0.15)" strokeWidth="1" />
+        <line x1="120" y1="120" x2="240" y2="180" stroke="rgba(239, 201, 78, 0.15)" strokeWidth="1" />
+        <line x1="240" y1="120" x2="120" y2="180" stroke="rgba(239, 201, 78, 0.15)" strokeWidth="1" />
+        <line x1="120" y1="180" x2="240" y2="240" stroke="rgba(239, 201, 78, 0.15)" strokeWidth="1" />
+        <line x1="240" y1="180" x2="120" y2="240" stroke="rgba(239, 201, 78, 0.15)" strokeWidth="1" />
       </g>
 
       {/* Stock Boxes on Shelf (Left) */}
-      <g fill="rgba(249, 115, 22, 0.15)" stroke="rgba(249, 115, 22, 0.7)" strokeWidth="1">
+      <g fill="rgba(239, 201, 78, 0.15)" stroke="rgba(239, 201, 78, 0.7)" strokeWidth="1">
         {/* Box on mid-shelf */}
         <path d="M 140 175 L 170 190 L 200 175 L 170 160 Z" />
         <path d="M 140 175 L 140 195 L 170 210 L 170 190 Z" />
         <path d="M 170 190 L 170 210 L 200 195 L 200 175 Z" />
 
         {/* Box on bottom shelf */}
-        <path d="M 150 235 L 180 250 L 210 235 L 180 220 Z" fill="rgba(249, 115, 22, 0.25)" />
+        <path d="M 150 235 L 180 250 L 210 235 L 180 220 Z" fill="rgba(239, 201, 78, 0.25)" />
         <path d="M 150 235 L 150 255 L 180 270 L 180 250 Z" />
         <path d="M 180 250 L 180 270 L 210 255 L 210 235 Z" />
       </g>
@@ -79,11 +79,11 @@ export function WarehouseSVG({ className = "" }: { className?: string }) {
       </g>
 
       {/* Radar Scan / Tech overlay indicators */}
-      <circle cx="170" cy="185" r="45" stroke="rgba(249, 115, 22, 0.2)" strokeWidth="1" strokeDasharray="3 3" />
-      <circle cx="170" cy="185" r="2" fill="#f97316" />
-      <line x1="170" y1="185" x2="215" y2="155" stroke="#f97316" strokeWidth="0.75" />
-      <rect x="220" y="135" width="110" height="30" rx="4" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(249, 115, 22, 0.4)" strokeWidth="1" />
-      <text x="228" y="147" fill="#f97316" fontFamily="monospace" fontSize="8" fontWeight="bold">LOTE: 84930-B</text>
+      <circle cx="170" cy="185" r="45" stroke="rgba(239, 201, 78, 0.2)" strokeWidth="1" strokeDasharray="3 3" />
+      <circle cx="170" cy="185" r="2" fill="var(--accent-yellow)" />
+      <line x1="170" y1="185" x2="215" y2="155" stroke="var(--accent-yellow)" strokeWidth="0.75" />
+      <rect x="220" y="135" width="110" height="30" rx="4" fill="rgba(23, 24, 25, 0.85)" stroke="rgba(239, 201, 78, 0.4)" strokeWidth="1" />
+      <text x="228" y="147" fill="var(--accent-yellow)" fontFamily="monospace" fontSize="8" fontWeight="bold">LOTE: 84930-B</text>
       <text x="228" y="158" fill="#cbd5e1" fontFamily="monospace" fontSize="8">RASTREAMENTO: 100%</text>
 
       {/* Dimension Indicators */}
@@ -135,11 +135,11 @@ export function FastenersBlueprintSVG({ className = "" }: { className?: string }
       </g>
 
       {/* Hex Nut (Separate Assembly) */}
-      <g stroke="#f97316" strokeWidth="1.5" fill="rgba(249, 115, 22, 0.05)" strokeLinejoin="round">
+      <g stroke="var(--accent-yellow)" strokeWidth="1.5" fill="rgba(239, 201, 78, 0.05)" strokeLinejoin="round">
         {/* Nut Head */}
         <path d="M 400 115 L 435 115 L 455 145 L 455 205 L 435 235 L 400 235 Z" />
         <line x1="435" y1="115" x2="435" y2="235" />
-        <circle cx="427" cy="175" r="30" stroke="#f97316" strokeWidth="0.75" strokeDasharray="3 3" fill="none" />
+        <circle cx="427" cy="175" r="30" stroke="var(--accent-yellow)" strokeWidth="0.75" strokeDasharray="3 3" fill="none" />
       </g>
 
       {/* Technical Dimensions Markers */}
@@ -164,20 +164,20 @@ export function FastenersBlueprintSVG({ className = "" }: { className?: string }
       <text x="415" y="180" fill="#38bdf8" fontFamily="monospace" fontSize="9">M20 (P1.5)</text>
 
       {/* Nut Width (s) */}
-      <g stroke="#f97316" strokeWidth="0.75">
+      <g stroke="var(--accent-yellow)" strokeWidth="0.75">
         <line x1="400" y1="245" x2="400" y2="260" />
         <line x1="455" y1="245" x2="455" y2="260" />
         <line x1="400" y1="255" x2="455" y2="255" />
-        <polygon points="400,255 407,252 407,258" fill="#f97316" />
-        <polygon points="455,255 448,252 448,258" fill="#f97316" />
+        <polygon points="400,255 407,252 407,258" fill="var(--accent-yellow)" />
+        <polygon points="455,255 448,252 448,258" fill="var(--accent-yellow)" />
       </g>
-      <text x="427" y="270" fill="#f97316" fontFamily="monospace" fontSize="9" textAnchor="middle">s = 30mm</text>
+      <text x="427" y="270" fill="var(--accent-yellow)" fontFamily="monospace" fontSize="9" textAnchor="middle">s = 30mm</text>
 
       {/* Compliance / Norm Banner */}
-      <rect x="30" y="275" width="220" height="50" rx="4" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="1" />
-      <text x="40" y="290" fill="#38bdf8" fontFamily="monospace" fontSize="8" fontWeight="bold">ENGENHARIA DETALHADA B2B</text>
+      <rect x="30" y="275" width="220" height="50" rx="4" fill="rgba(23, 24, 25, 0.85)" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="1" />
+      <text x="40" y="290" fill="#38bdf8" fontFamily="monospace" fontSize="8" fontWeight="bold">ENGENHARIA DE FIXADORES</text>
       <text x="40" y="303" fill="#cbd5e1" fontFamily="sans-serif" fontSize="8">Norma Técnica: DIN 931 (ISO 4014)</text>
-      <text x="40" y="316" fill="#f97316" fontFamily="sans-serif" fontSize="8" fontWeight="bold">Teste de Carga Estática: APROVADO</text>
+      <text x="40" y="316" fill="var(--accent-yellow)" fontFamily="sans-serif" fontSize="8" fontWeight="bold">Teste de Carga Estática: APROVADO</text>
     </svg>
   );
 }
@@ -193,15 +193,15 @@ export function ConsultingSVG({ className = "" }: { className?: string }) {
     >
       <defs>
         <pattern id="grid-consult" width="20" height="20" patternUnits="userSpaceOnUse">
-          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(249, 115, 22, 0.03)" strokeWidth="0.5" />
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(239, 201, 78, 0.03)" strokeWidth="0.5" />
         </pattern>
       </defs>
       <rect width="100%" height="100%" fill="url(#grid-consult)" rx="8" />
 
       {/* Concentric circles representation of torque/alignment */}
-      <circle cx="250" cy="175" r="120" stroke="rgba(249, 115, 22, 0.05)" strokeWidth="1" />
-      <circle cx="250" cy="175" r="90" stroke="rgba(249, 115, 22, 0.05)" strokeWidth="1" />
-      <circle cx="250" cy="175" r="60" stroke="rgba(249, 115, 22, 0.05)" strokeWidth="1" />
+      <circle cx="250" cy="175" r="120" stroke="rgba(239, 201, 78, 0.05)" strokeWidth="1" />
+      <circle cx="250" cy="175" r="90" stroke="rgba(239, 201, 78, 0.05)" strokeWidth="1" />
+      <circle cx="250" cy="175" r="60" stroke="rgba(239, 201, 78, 0.05)" strokeWidth="1" />
 
       {/* Diagonal rays */}
       <line x1="100" y1="25" x2="400" y2="325" stroke="rgba(255,255,255,0.03)" strokeWidth="0.5" />
@@ -210,9 +210,9 @@ export function ConsultingSVG({ className = "" }: { className?: string }) {
       {/* Part to be measured (Special customized flange/screw piece) */}
       <g stroke="rgba(255, 255, 255, 0.2)" strokeWidth="1.5" fill="rgba(255, 255, 255, 0.02)">
         <rect x="210" y="70" width="80" height="210" rx="6" />
-        <circle cx="250" cy="175" r="35" stroke="rgba(249, 115, 22, 0.4)" fill="rgba(249, 115, 22, 0.05)" />
-        <path d="M 180 175 L 320 175" stroke="rgba(249, 115, 22, 0.2)" strokeDasharray="3 3" />
-        <path d="M 250 105 L 250 245" stroke="rgba(249, 115, 22, 0.2)" strokeDasharray="3 3" />
+        <circle cx="250" cy="175" r="35" stroke="rgba(239, 201, 78, 0.4)" fill="rgba(239, 201, 78, 0.05)" />
+        <path d="M 180 175 L 320 175" stroke="rgba(239, 201, 78, 0.2)" strokeDasharray="3 3" />
+        <path d="M 250 105 L 250 245" stroke="rgba(239, 201, 78, 0.2)" strokeDasharray="3 3" />
       </g>
 
       {/* Caliper overlay (Metallic gray with orange highlights) */}
@@ -236,11 +236,10 @@ export function ConsultingSVG({ className = "" }: { className?: string }) {
           <line x1="45" y1="50" x2="45" y2="55" stroke="#fff" strokeWidth="1" />
 
           {/* Digital readout window */}
-          <rect x="10" y="10" width="40" height="20" rx="2" fill="#020617" stroke="#ea580c" strokeWidth="1" />
-          <text x="30" y="24" fill="#f97316" fontFamily="monospace" fontSize="10" fontWeight="bold" textAnchor="middle">135.0</text>
-          <text x="45" y="18" fill="#f97316" fontFamily="sans-serif" fontSize="5">mm</text>
+          <rect x="10" y="10" width="40" height="20" rx="2" fill="#171819" stroke="var(--accent-yellow)" strokeWidth="1" />
+          <text x="30" y="24" fill="var(--accent-yellow)" fontFamily="monospace" fontSize="10" fontWeight="bold" textAnchor="middle">135.0</text>
+          <text x="45" y="18" fill="var(--accent-yellow)" fontFamily="sans-serif" fontSize="5">mm</text>
         </g>
-
         {/* Caliper ticks */}
         <line x1="100" y1="60" x2="100" y2="70" stroke="#cbd5e1" strokeWidth="1" />
         <line x1="150" y1="60" x2="150" y2="70" stroke="#cbd5e1" strokeWidth="1" />
@@ -252,16 +251,16 @@ export function ConsultingSVG({ className = "" }: { className?: string }) {
       </g>
 
       {/* Target Focus graphic indicator */}
-      <circle cx="210" cy="175" r="8" stroke="#ea580c" strokeWidth="1.5" />
-      <line x1="210" y1="162" x2="210" y2="188" stroke="#ea580c" strokeWidth="0.75" />
-      <line x1="197" y1="175" x2="223" y2="175" stroke="#ea580c" strokeWidth="0.75" />
+      <circle cx="210" cy="175" r="8" stroke="var(--accent-yellow)" strokeWidth="1.5" />
+      <line x1="210" y1="162" x2="210" y2="188" stroke="var(--accent-yellow)" strokeWidth="0.75" />
+      <line x1="197" y1="175" x2="223" y2="175" stroke="var(--accent-yellow)" strokeWidth="0.75" />
 
       {/* Legend details */}
-      <rect x="290" y="245" width="180" height="80" rx="4" fill="rgba(15, 23, 42, 0.9)" stroke="rgba(249, 115, 22, 0.2)" strokeWidth="1" />
+      <rect x="290" y="245" width="180" height="80" rx="4" fill="rgba(23, 24, 25, 0.9)" stroke="rgba(239, 201, 78, 0.2)" strokeWidth="1" />
       <text x="300" y="262" fill="#cbd5e1" fontFamily="sans-serif" fontSize="8" fontWeight="bold">TOLERÂNCIA DIMENSIONAL</text>
       <text x="300" y="277" fill="rgba(255,255,255,0.5)" fontFamily="sans-serif" fontSize="7">Limite Superior: +0.02mm</text>
       <text x="300" y="289" fill="rgba(255,255,255,0.5)" fontFamily="sans-serif" fontSize="7">Limite Inferior: -0.01mm</text>
-      <text x="300" y="301" fill="#ea580c" fontFamily="sans-serif" fontSize="7" fontWeight="bold">CONFORMIDADE DA ENGENHARIA: 100%</text>
+      <text x="300" y="301" fill="var(--accent-yellow)" fontFamily="sans-serif" fontSize="7" fontWeight="bold">CONFORMIDADE DA ENGENHARIA: 100%</text>
       <text x="300" y="315" fill="#38bdf8" fontFamily="monospace" fontSize="8" fontWeight="bold">ATENDIMENTO TÉCNICO CONSULTIVO</text>
     </svg>
   );
