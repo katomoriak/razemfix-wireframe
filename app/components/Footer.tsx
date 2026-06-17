@@ -18,10 +18,10 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Image
-                src="/razemfix.png"
+                src="/razemfix_logotipocompleto.svg"
                 alt="Razemfix"
-                width={150}
-                height={42}
+                width={170}
+                height={48}
                 className="h-9 w-auto object-contain"
               />
             </div>

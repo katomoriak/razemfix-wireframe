@@ -67,7 +67,7 @@ export default function Home() {
         "Autobrocantes (Para fixação de telhas e painéis solares)",
       ],
       desc: "Ampla gama de parafusos sextavados, allen e outras cabeças normatizadas em aço carbono, inox e ligas especiais.",
-      image: "/parafusos home.png",
+      image: "/parafusos.png",
     },
     {
       title: "Porcas",
@@ -77,7 +77,7 @@ export default function Home() {
         "Porcas Auto-Travantes (Com inserto de nylon)",
       ],
       desc: "Porcas industriais calibradas para travamento de segurança e distribuição uniforme de esforços.",
-      image: "/parafusos home.png",
+      image: "/porcas.png",
     },
     {
       title: "Arruelas",
@@ -86,25 +86,57 @@ export default function Home() {
         "Arruelas de Pressão (DIN 127)",
       ],
       desc: "Arruelas técnicas para assentamento e segurança mecânica contra afrouxamento por vibração.",
-      image: "/parafusos home.png",
+      image: "/arruelas.png",
     },
     {
-      title: "Chumbadores",
+      title: "Chumbadores Mecânicos",
       items: [
-        "Chumbadores Mecânicos (Parabolts, CBA, expansão controlada)",
-        "Soluções de Ancoragem Química (Ampolas e resinas injetáveis)",
+        "Parabolts e Chumbadores de Expansão Controlada",
+        "CBA — Chumbador de Barra de Ancoragem",
+        "Chumbadores de Impacto e Cunha",
       ],
-      desc: "Soluções de fixação de alto desempenho em bases de concreto e alvenaria estrutural.",
-      image: "/parafusos home.png",
+      desc: "Fixação mecânica de alto desempenho em concreto e alvenaria estrutural, com controle rigoroso de carga.",
+      image: "/chumbadores mecanicos.png",
     },
     {
-      title: "Barras Roscadas e Rebites",
+      title: "Chumbadores Químicos",
       items: [
-        "Barras Roscadas (DIN 975, corte sob medida)",
-        "Rebites de Repuxo Técnico",
+        "Ampolas de Resina para Ancoragem",
+        "Resinas Injetáveis (Epóxi e Vinilester)",
+        "Hastes Roscadas para Ancoragem Química",
       ],
-      desc: "Barras estruturais contínuas e rebites de repuxo industrial para uniões rápidas de chapas.",
-      image: "/parafusos home.png",
+      desc: "Soluções de ancoragem química para cargas elevadas em concreto fissurado e estruturas especiais.",
+      image: "/chumbadores quimicos.png",
+    },
+    {
+      title: "Barras Roscadas",
+      items: [
+        "Barras Roscadas (DIN 975 — Corte sob medida)",
+        "Estojos e Prisioneiros Roscados",
+        "Varões Roscados para Construção Civil",
+      ],
+      desc: "Barras estruturais contínuas normatizadas, disponíveis em aço carbono, inox e ligas especiais, cortadas no comprimento exato.",
+      image: "/barras roscadas.png",
+    },
+    {
+      title: "Rebites",
+      items: [
+        "Rebites de Repuxo Técnico (Alumínio, Aço e Inox)",
+        "Rebites Estruturais de Alta Resistência",
+        "Rebites Flangeados e de Grande Diâmetro",
+      ],
+      desc: "Fixação rápida e permanente por repuxo industrial, ideal para uniões de chapas metálicas e perfis.",
+      image: "/rebites.png",
+    },
+    {
+      title: "Fixadores para Painéis Solares",
+      items: [
+        "Parafusos Autobrocantes para Perfis de Alumínio",
+        "Clamps e Fixadores de Módulos Fotovoltaicos",
+        "Parafusos e Porcas em Aço Inox para Estruturas",
+      ],
+      desc: "Elementos de fixação dedicados para sistemas fotovoltaicos, resistentes à corrosão e às intempéries para máxima durabilidade.",
+      image: "/paineis solares.png",
     },
     {
       title: "Acessórios e Fixadores Civis",
@@ -113,7 +145,7 @@ export default function Home() {
         "Fixadores dedicados para estruturas de construção civil",
       ],
       desc: "Elementos de suporte logístico, elevação de carga e montagem civil pesada.",
-      image: "/parafusos home.png",
+      image: "/acessorios.png",
     },
   ];
 
@@ -619,14 +651,35 @@ export default function Home() {
                 </div>
 
                 <div className="pt-2 relative z-10 space-y-3">
-                  <Link
-                    href="/contato"
-                    className="w-full px-6 py-4 bg-accent-yellow hover:bg-accent-yellow-hover text-zinc-950 rounded-lg font-bold text-sm tracking-wider shadow active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 group border border-accent-yellow/20"
+                  <a
+                    href="https://wa.me/551143182878"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative overflow-hidden group z-0 flex items-center justify-center gap-2 w-full px-6 py-4 bg-accent-yellow text-zinc-950 rounded-lg font-bold text-sm tracking-wider active:scale-95 transition-all duration-300 border border-accent-yellow/20 whitespace-nowrap animate-pulse-subtle hover:animate-none"
                   >
-                    <FileText className="h-4 w-4" />
-                    ACESSAR FORMULÁRIO DE COTAÇÃO
-                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
+                    {/* Expanding circle background */}
+                    <span className="absolute inset-0 bg-emerald-600 rounded-full scale-0 group-hover:scale-[2.5] transition-transform duration-500 ease-out -z-10 origin-center" />
+                    
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-zinc-950 shrink-0 group-hover:text-white transition-colors duration-300">
+                      <path d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.76.457 3.414 1.258 4.86L2 22l5.312-1.394c1.408.767 3.013 1.206 4.698 1.206 5.506 0 9.988-4.482 9.988-9.988s-4.482-9.988-9.988-9.988zm4.78 13.06c-.2.56-1.16 1.08-1.6 1.12-.4.04-.92.22-2.74-.5-2.32-.92-3.8-3.28-3.92-3.44-.12-.16-1.04-1.38-1.04-2.63 0-1.25.64-1.86.88-2.12.2-.22.44-.28.58-.28.14 0 .28 0 .4.02.12.02.28-.04.44.34.16.38.56 1.36.6 1.48.04.1.06.22 0 .34-.06.12-.1.2-.2.32-.1.1-.2.24-.3.34-.1.12-.22.24-.1.44.12.2.54.88 1.14 1.42.78.7 1.44.92 1.64 1.02.2.1.32.08.44-.06.12-.14.52-.6.66-.8.14-.2.28-.16.48-.08.2.08 1.26.6 1.48.7.22.1.36.16.42.26.06.1.06.56-.14 1.12z" />
+                    </svg>
+                    
+                    <span className="group-hover:text-white transition-colors duration-300">CONTATE-NOS PELO WHATSAPP</span>
+
+                    {/* Sliding External Arrow Icon */}
+                    <svg 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2.5" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      className="h-3.5 w-0 opacity-0 group-hover:w-3.5 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 shrink-0 text-white"
+                    >
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </a>
 
                   <a
                     href="mailto:contato@razemfix.com.br"

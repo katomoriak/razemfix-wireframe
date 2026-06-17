@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import {
   ShieldCheck,
   Building,
@@ -9,7 +10,7 @@ import {
   Hammer,
   Layers,
 } from "lucide-react";
-import { WarehouseSVG, FastenersBlueprintSVG } from "../components/TechnicalDrawings";
+import { FastenersBlueprintSVG } from "../components/TechnicalDrawings";
 
 export default function SobreNos() {
   const compliancePoints = [
@@ -60,8 +61,23 @@ export default function SobreNos() {
             </p>
           </div>
           
-          <div className="lg:col-span-5 hidden lg:block border border-zinc-200 rounded-2xl p-4 bg-white shadow-xl">
-            <WarehouseSVG className="w-full h-auto drop-shadow-sm" />
+          <div className="lg:col-span-5 hidden lg:block relative rounded-2xl overflow-hidden shadow-xl border border-zinc-200" style={{ minHeight: '360px' }}>
+            <Image
+              src="/prateleiras 2.png"
+              alt="Prateleiras com estoque de fixadores Razemfix"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 0px, 40vw"
+              priority
+            />
+            {/* Subtle gradient overlay at the bottom for a polished look */}
+            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/30 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-4 left-4 right-4 z-10">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-zinc-950/70 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider rounded-full border border-white/10">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-yellow animate-pulse" />
+                Estoque Regulador — São Caetano do Sul
+              </span>
+            </div>
           </div>
         </div>
 

@@ -44,10 +44,10 @@ export default function Header() {
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center gap-2 group">
               <Image
-                src="/razemfix.png"
+                src="/razemfix_logotipocompleto.svg"
                 alt="Razemfix"
-                width={160}
-                height={45}
+                width={180}
+                height={50}
                 className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                 priority
               />

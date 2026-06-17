@@ -16,6 +16,14 @@ export const metadata: Metadata = {
   title: "Razemfix | Parafusos e Fixadores de Alta Qualidade",
   description: "A Razemfix é fabricante de parafusos e fixadores industriais de alto desempenho. Fornecemos parafusos de aço, parafusos inox, parafusos sextavados e fixadores de alta resistência com certificação ISO 9001.",
   keywords: "parafusos, parafusos inox, parafusos de aço, parafusos sextavados, fixadores industriais, fixadores de alta resistencia, fabricante de parafusos, parafuso sob medida, parafuso personalizado, fixadores personalizados, razemfix, parafusos e fixadores de alta qualidade",
+  icons: {
+    icon: [
+      { url: "/simbolo_favicon.svg", type: "image/svg+xml" },
+      { url: "/simbolo_favicon.png", type: "image/png" },
+    ],
+    shortcut: "/simbolo_favicon.png",
+    apple: "/simbolo_favicon.png",
+  },
 };
 
 export default function RootLayout({
