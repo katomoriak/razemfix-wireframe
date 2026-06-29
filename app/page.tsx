@@ -109,16 +109,6 @@ export default function Home() {
       image: "/chumbadores quimicos.png",
     },
     {
-      title: "Barras Roscadas",
-      items: [
-        "Barras Roscadas (DIN 975 — Corte sob medida)",
-        "Estojos e Prisioneiros Roscados",
-        "Varões Roscados para Construção Civil",
-      ],
-      desc: "Barras estruturais contínuas normatizadas, disponíveis em aço carbono, inox e ligas especiais, cortadas no comprimento exato.",
-      image: "/barras roscadas.png",
-    },
-    {
       title: "Rebites",
       items: [
         "Rebites de Repuxo Técnico (Alumínio, Aço e Inox)",
@@ -129,7 +119,7 @@ export default function Home() {
       image: "/rebites.png",
     },
     {
-      title: "Fixadores para Painéis Solares",
+      title: "Fixadores Para Painéis Solares",
       items: [
         "Parafusos Autobrocantes para Perfis de Alumínio",
         "Clamps e Fixadores de Módulos Fotovoltaicos",
@@ -139,12 +129,14 @@ export default function Home() {
       image: "/paineis solares.png",
     },
     {
-      title: "Acessórios e Fixadores Civis",
+      title: "Acessórios e Fixadores",
       items: [
+        "Barras Roscadas (DIN 975 — Corte sob medida)",
+        "Estojos e Prisioneiros Roscados",
         "Acessórios para Cabos de Aço (Clipes, sapatilhas, esticadores)",
         "Fixadores dedicados para estruturas de construção civil",
       ],
-      desc: "Elementos de suporte logístico, elevação de carga e montagem civil pesada.",
+      desc: "Barras estruturais, acessórios de movimentação de carga, suporte logístico e montagem civil pesada.",
       image: "/acessorios.png",
     },
   ];

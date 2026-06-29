@@ -14,226 +14,28 @@ import {
   Settings,
 } from "lucide-react";
 
-interface Product {
-  id: string;
-  category: number; // 0: Parafusos, 1: Porcas, 2: Arruelas, 3: Chumbadores, 4: Barras/Rebites, 5: Acessórios
-  title: string;
-  norm: string;
-  material: string;
-  grade: string;
-  application: string;
-  description: string;
-  sizes: string[];
-  svgType: string;
-}
+import { Product, productsData as products } from "./products-data";
 
-// Inline component to draw clean, technical vector blueprints of products
-function ProductBlueprintSVG({ type }: { type: string }) {
-  const strokeColor = "#71717a"; // slate-500
-  const brandYellow = "var(--accent-yellow)"; // amarelo da marca
-  const fillYellow = "rgba(239, 201, 78, 0.1)"; // brand yellow 10%
+function ProductImage({ src, alt }: { src: string; alt: string }) {
+  const [error, setError] = useState(false);
 
-  switch (type) {
-    case "parafuso-sextavado":
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          <line x1="10" y1="50" x2="150" y2="50" stroke={brandYellow} strokeWidth="0.5" strokeDasharray="6 4" />
-          {/* Hex Head */}
-          <path d="M 20 25 L 45 25 L 58 50 L 45 75 L 20 75 L 8 50 Z" fill={fillYellow} stroke={strokeColor} strokeWidth="1.5" strokeLinejoin="round" />
-          <line x1="45" y1="25" x2="45" y2="75" stroke={strokeColor} strokeWidth="1" />
-          <line x1="20" y1="25" x2="20" y2="75" stroke={strokeColor} strokeWidth="1" />
-          {/* Bolt Shank */}
-          <path d="M 58 38 L 130 38 L 130 62 L 58 62 Z" stroke={strokeColor} strokeWidth="1.5" />
-          {/* Threads */}
-          <path d="M 95 38 L 98 44 L 101 38 M 101 38 L 104 44 L 107 38 M 107 38 L 110 44 L 113 38 M 113 38 L 116 44 L 119 38 M 119 38 L 122 44 L 125 38 M 125 38 L 128 44 L 130 38" stroke={strokeColor} strokeWidth="1" />
-          <path d="M 95 62 L 98 56 L 101 62 M 101 62 L 104 56 L 107 62 M 107 62 L 110 56 L 113 62 M 113 62 L 116 56 L 119 62 M 119 62 L 122 56 L 125 62 M 125 62 L 128 56 L 130 62" stroke={strokeColor} strokeWidth="1" />
-          {/* Chamfer */}
-          <path d="M 130 38 L 136 44 L 136 56 L 130 62 Z" fill={fillYellow} stroke={strokeColor} strokeWidth="1" />
-        </svg>
-      );
-    case "parafuso-allen":
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          <line x1="10" y1="50" x2="150" y2="50" stroke={brandYellow} strokeWidth="0.5" strokeDasharray="6 4" />
-          {/* Socket Head */}
-          <path d="M 15 28 L 50 28 L 50 72 L 15 72 Z" fill={fillYellow} stroke={strokeColor} strokeWidth="1.5" strokeLinejoin="round" />
-          {/* Internal Hex Drive */}
-          <path d="M 22 40 L 30 35 L 38 40 L 38 50 L 30 55 L 22 50 Z" stroke={brandYellow} strokeWidth="1" />
-          {/* Shank */}
-          <path d="M 50 36 L 135 36 L 135 64 L 50 64 Z" stroke={strokeColor} strokeWidth="1.5" />
-          {/* Threads */}
-          <path d="M 95 36 L 98 42 L 101 36 M 101 36 L 104 42 L 107 36 M 107 36 L 110 42 L 113 36 M 113 36 L 116 42 L 119 36 M 119 36 L 122 42 L 125 36 M 125 36 L 128 42 L 131 36 M 131 36 L 134 42 L 135 36" stroke={strokeColor} strokeWidth="1" />
-          <path d="M 95 64 L 98 58 L 101 64 M 101 64 L 104 58 L 107 64 M 107 64 L 110 58 L 113 64 M 113 64 L 116 58 L 119 64 M 119 64 L 122 58 L 125 64 M 125 64 L 128 58 L 131 64 M 131 64 L 134 58 L 135 64" stroke={strokeColor} strokeWidth="1" />
-        </svg>
-      );
-    case "parafuso-frances":
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          <line x1="10" y1="50" x2="150" y2="50" stroke={brandYellow} strokeWidth="0.5" strokeDasharray="6 4" />
-          {/* Dome Head */}
-          <path d="M 12 50 C 12 28, 42 28, 42 50 C 42 72, 12 72, 12 50 Z" fill={fillYellow} stroke={strokeColor} strokeWidth="1.5" />
-          {/* Square Neck */}
-          <rect x="42" y="36" width="12" height="28" stroke={strokeColor} strokeWidth="1.5" />
-          {/* Shank */}
-          <path d="M 54 38 L 130 38 L 130 62 L 54 62 Z" stroke={strokeColor} strokeWidth="1.5" />
-          {/* Threads */}
-          <path d="M 95 38 L 98 44 L 101 38 M 101 38 L 104 44 L 107 38 M 107 38 L 110 44 L 113 38 M 113 38 L 116 44 L 119 38 M 119 38 L 122 44 L 125 38 M 125 38 L 128 44 L 130 38" stroke={strokeColor} strokeWidth="1" />
-          <path d="M 95 62 L 98 56 L 101 62 M 101 62 L 104 56 L 107 62 M 107 62 L 110 56 L 113 62 M 113 62 L 116 56 L 119 62 M 119 62 L 122 56 L 125 62 M 125 62 L 128 56 L 130 62" stroke={strokeColor} strokeWidth="1" />
-        </svg>
-      );
-    case "parafuso-martelo":
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          <line x1="10" y1="50" x2="150" y2="50" stroke={brandYellow} strokeWidth="0.5" strokeDasharray="6 4" />
-          {/* T-Head */}
-          <path d="M 12 25 L 35 25 L 35 75 L 12 75 Z" fill={fillYellow} stroke={strokeColor} strokeWidth="1.5" />
-          {/* Shank */}
-          <path d="M 35 38 L 130 38 L 130 62 L 35 62 Z" stroke={strokeColor} strokeWidth="1.5" />
-          {/* Threads */}
-          <line x1="90" y1="38" x2="90" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="96" y1="38" x2="96" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="102" y1="38" x2="102" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="108" y1="38" x2="108" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="114" y1="38" x2="114" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="120" y1="38" x2="120" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="126" y1="38" x2="126" y2="62" stroke={strokeColor} strokeWidth="1" />
-        </svg>
-      );
-    case "parafuso-autobrocante":
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          <line x1="10" y1="50" x2="150" y2="50" stroke={brandYellow} strokeWidth="0.5" strokeDasharray="6 4" />
-          {/* Flanged Hex Head */}
-          <path d="M 12 32 L 28 32 L 28 22 L 36 22 L 42 50 L 36 78 L 28 78 L 28 68 L 12 68 Z" fill={fillYellow} stroke={strokeColor} strokeWidth="1.5" />
-          {/* Shank */}
-          <path d="M 42 40 L 115 40 L 115 60 L 42 60 Z" stroke={strokeColor} strokeWidth="1.5" />
-          {/* Spaced sharp threads */}
-          <path d="M 55 40 L 60 35 L 65 40 M 75 40 L 80 35 L 85 40 M 95 40 L 100 35 L 105 40" stroke={strokeColor} strokeWidth="1" />
-          <path d="M 55 60 L 60 65 L 65 60 M 75 60 L 80 65 L 85 60 M 95 60 L 100 65 L 105 60" stroke={strokeColor} strokeWidth="1" />
-          {/* Drill tip */}
-          <path d="M 115 40 L 135 50 L 115 60 Z" fill={fillYellow} stroke={strokeColor} strokeWidth="1.5" />
-          <line x1="115" y1="50" x2="135" y2="50" stroke={strokeColor} strokeWidth="1" />
-        </svg>
-      );
-    case "porca-sextavada":
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          {/* Hex Nut Face View */}
-          <path d="M 50 15 L 110 15 L 140 50 L 110 85 L 50 85 L 20 50 Z" fill={fillYellow} stroke={strokeColor} strokeWidth="1.5" strokeLinejoin="round" />
-          {/* Inner Thread Circle */}
-          <circle cx="80" cy="50" r="24" stroke={strokeColor} strokeWidth="1.5" />
-          <circle cx="80" cy="50" r="20" stroke={brandYellow} strokeWidth="1" strokeDasharray="5 3" />
-        </svg>
-      );
-    case "porca-flangeada":
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          {/* Flanged Nut Side View */}
-          <path d="M 40 30 L 120 30 L 125 68 L 145 74 L 145 80 L 15 80 L 15 74 L 35 68 Z" fill={fillYellow} stroke={strokeColor} strokeWidth="1.5" strokeLinejoin="round" />
-          {/* Flange serrations */}
-          <line x1="25" y1="80" x2="20" y2="76" stroke={strokeColor} strokeWidth="1" />
-          <line x1="45" y1="80" x2="40" y2="76" stroke={strokeColor} strokeWidth="1" />
-          <line x1="65" y1="80" x2="60" y2="76" stroke={strokeColor} strokeWidth="1" />
-          <line x1="85" y1="80" x2="80" y2="76" stroke={strokeColor} strokeWidth="1" />
-          <line x1="105" y1="80" x2="100" y2="76" stroke={strokeColor} strokeWidth="1" />
-          <line x1="125" y1="80" x2="120" y2="76" stroke={strokeColor} strokeWidth="1" />
-          <line x1="140" y1="80" x2="135" y2="76" stroke={strokeColor} strokeWidth="1" />
-          {/* Center line */}
-          <line x1="80" y1="15" x2="80" y2="90" stroke={brandYellow} strokeWidth="0.5" strokeDasharray="6 4" />
-        </svg>
-      );
-    case "arruela-lisa":
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          {/* Flat Washer concentric circles */}
-          <circle cx="80" cy="50" r="38" fill={fillYellow} stroke={strokeColor} strokeWidth="1.5" />
-          <circle cx="80" cy="50" r="18" stroke={strokeColor} strokeWidth="1.5" />
-          {/* Dim line */}
-          <line x1="42" y1="50" x2="118" y2="50" stroke={brandYellow} strokeWidth="0.5" strokeDasharray="3 3" />
-        </svg>
-      );
-    case "arruela-pressao":
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          {/* Spring Lock Washer side/slanted loop */}
-          <circle cx="80" cy="50" r="36" fill={fillYellow} stroke={strokeColor} strokeWidth="2.5" strokeDasharray="210 20" />
-          <line x1="90" y1="20" x2="104" y2="28" stroke={strokeColor} strokeWidth="2.5" strokeLinecap="square" />
-          <line x1="88" y1="18" x2="82" y2="30" stroke={brandYellow} strokeWidth="1" />
-        </svg>
-      );
-    case "chumbador-mecanico":
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          <line x1="10" y1="50" x2="150" y2="50" stroke={brandYellow} strokeWidth="0.5" strokeDasharray="6 4" />
-          {/* Parabolt expansion anchor body */}
-          <rect x="25" y="44" width="8" height="12" fill={fillYellow} stroke={strokeColor} strokeWidth="1.5" /> {/* Nut */}
-          <rect x="33" y="40" width="4" height="20" stroke={strokeColor} strokeWidth="1" /> {/* Washer */}
-          <path d="M 37 45 L 105 45 L 105 55 L 37 55 Z" stroke={strokeColor} strokeWidth="1.5" /> {/* Shank */}
-          <path d="M 85 45 L 115 42 L 125 50 L 115 58 L 85 55 Z" fill={fillYellow} stroke={strokeColor} strokeWidth="1" /> {/* Expand sleeve */}
-          <path d="M 125 43 L 138 50 L 125 57 Z" fill={fillYellow} stroke={strokeColor} strokeWidth="1.5" /> {/* Cone */}
-        </svg>
-      );
-    case "chumbador-quimico":
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          {/* Chemical capsule + rod */}
-          <path d="M 15 45 L 75 45 C 80 45, 80 55, 75 55 L 15 55 C 10 55, 10 45, 15 45 Z" fill="rgba(239, 201, 78, 0.15)" stroke={brandYellow} strokeWidth="1.5" strokeDasharray="3 2" />
-          <path d="M 50 48 L 140 48 L 140 52 L 50 52 Z" stroke={strokeColor} strokeWidth="1.5" /> {/* Stud rod */}
-          <line x1="80" y1="42" x2="80" y2="58" stroke={strokeColor} strokeWidth="1" />
-          <line x1="90" y1="42" x2="90" y2="58" stroke={strokeColor} strokeWidth="1" />
-          <line x1="100" y1="42" x2="100" y2="58" stroke={strokeColor} strokeWidth="1" />
-          <line x1="110" y1="42" x2="110" y2="58" stroke={strokeColor} strokeWidth="1" />
-          <line x1="120" y1="42" x2="120" y2="58" stroke={strokeColor} strokeWidth="1" />
-        </svg>
-      );
-    case "barra-roscada":
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          <line x1="10" y1="50" x2="150" y2="50" stroke={brandYellow} strokeWidth="0.5" strokeDasharray="6 4" />
-          {/* Threaded Rod */}
-          <rect x="15" y="38" width="130" height="24" fill={fillYellow} stroke={strokeColor} strokeWidth="1.5" />
-          {/* Diagonal thread lines */}
-          <line x1="25" y1="38" x2="35" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="35" y1="38" x2="45" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="45" y1="38" x2="55" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="55" y1="38" x2="65" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="65" y1="38" x2="75" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="75" y1="38" x2="85" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="85" y1="38" x2="95" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="95" y1="38" x2="105" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="105" y1="38" x2="115" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="115" y1="38" x2="125" y2="62" stroke={strokeColor} strokeWidth="1" />
-          <line x1="125" y1="38" x2="135" y2="62" stroke={strokeColor} strokeWidth="1" />
-        </svg>
-      );
-    case "rebite":
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          <line x1="10" y1="50" x2="150" y2="50" stroke={brandYellow} strokeWidth="0.5" strokeDasharray="6 4" />
-          {/* Pop rivet blueprint */}
-          <path d="M 65 34 L 140 49 L 140 51 L 65 66 Z" stroke={strokeColor} strokeWidth="1" /> {/* Pull mandrel wire */}
-          <path d="M 22 43 L 60 43 L 60 57 L 22 57 Z" fill={fillYellow} stroke={strokeColor} strokeWidth="1.5" /> {/* Rivet body */}
-          <path d="M 60 36 L 65 36 L 65 64 L 60 64 Z" fill={fillYellow} stroke={strokeColor} strokeWidth="1.5" /> {/* Flange */}
-          <circle cx="20" cy="50" r="4.5" fill={strokeColor} /> {/* Mandrel head */}
-        </svg>
-      );
-    case "acessorio":
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          {/* Cable Clip / Thimble or structural loop */}
-          <path d="M 80 15 C 50 15, 30 35, 30 50 C 30 65, 50 85, 80 85 C 110 85, 130 65, 130 50 C 130 35, 110 15, 80 15 Z" stroke={strokeColor} strokeWidth="2" />
-          <path d="M 80 25 C 60 25, 45 38, 45 50 C 45 62, 60 75, 80 75 C 100 75, 115 62, 115 50 C 115 38, 100 25, 80 25 Z" fill={fillYellow} stroke={brandYellow} strokeWidth="1" />
-          <line x1="30" y1="50" x2="130" y2="50" stroke={brandYellow} strokeWidth="0.5" strokeDasharray="3 3" />
-        </svg>
-      );
-    default:
-      return (
-        <svg viewBox="0 0 160 100" className="w-full h-32 mx-auto drop-shadow-sm fill-none">
-          <circle cx="80" cy="50" r="30" stroke={strokeColor} strokeWidth="1.5" strokeDasharray="4 4" />
-          <path d="M 65 50 L 95 50 M 80 35 L 80 65" stroke={brandYellow} strokeWidth="1.5" />
-        </svg>
-      );
+  if (error || !src) {
+    return (
+      <div className="w-full h-32 flex flex-col items-center justify-center bg-zinc-100/60 rounded-lg text-zinc-400">
+        <Settings className="h-7 w-7 animate-spin text-zinc-300 mb-1" style={{ animationDuration: "3s" }} />
+        <span className="text-[9px] font-mono tracking-wider uppercase text-zinc-400">Imagem em breve</span>
+      </div>
+    );
   }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className="w-full h-32 object-contain mx-auto drop-shadow-sm transition-transform duration-305 group-hover:scale-105"
+      onError={() => setError(true)}
+    />
+  );
 }
 
 function ProdutosContent() {
@@ -252,7 +54,7 @@ function ProdutosContent() {
   useEffect(() => {
     if (catParam !== null) {
       const catIndex = parseInt(catParam, 10);
-      if (catIndex >= 0 && catIndex <= 5) {
+      if (catIndex >= 0 && catIndex <= 8) {
         setSelectedCategory(catIndex);
       }
     }
@@ -262,248 +64,13 @@ function ProdutosContent() {
     "Parafusos",
     "Porcas",
     "Arruelas",
-    "Chumbadores",
-    "Barras Roscadas e Rebites",
-    "Acessórios e Fixadores Civis",
+    "Chumbadores Mecânicos",
+    "Chumbadores Químicos",
+    "Rebites",
+    "Fixadores Para Painéis Solares",
+    "Acessórios e Fixadores",
+    "Barras Roscadas",
   ];
-
-  const products: Product[] = [
-    // Categoria 0: Parafusos
-    {
-      id: "p1",
-      category: 0,
-      title: "Parafuso Sextavado Estrutural ASTM A325",
-      norm: "ASTM A325 / ASME B18.2.6",
-      material: "Aço Carbono Temperado e Revenido",
-      grade: "Classe A325 Tipo 1",
-      application: "Ligações estruturais pesadas, flanges de pontes e sustentação metálica.",
-      description: "Desenvolvido especificamente para conexões estruturais de alta resistência mecânica, fornecendo força de fixação garantida sob conformidade rígida de tração.",
-      sizes: ["1/2\"", "5/8\"", "3/4\"", "7/8\"", "1\"", "1.1/4\""],
-      svgType: "parafuso-sextavado",
-    },
-    {
-      id: "p2",
-      category: 0,
-      title: "Parafuso Allen Cabeça Cilíndrica DIN 912",
-      norm: "DIN 912 / ISO 4762",
-      material: "Aço Liga de Alta Resistência",
-      grade: "Classe 12.9",
-      application: "Maquinários internos de precisão, matrizes industriais e motores de alta vibração.",
-      description: "A cabeça cilíndrica com sextavado interno permite aperto de torque elevado em espaços limitados de montagem.",
-      sizes: ["M3", "M4", "M5", "M6", "M8", "M10", "M12", "M16", "M20"],
-      svgType: "parafuso-allen",
-    },
-    {
-      id: "p3",
-      category: 0,
-      title: "Parafuso Allen Cabeça Abaulada ISO 7380",
-      norm: "ISO 7380",
-      material: "Aço Inoxidável AISI 304 A2 / 316 A4",
-      grade: "Classe 70 / 80",
-      application: "Fixação leve e montagem de chapas onde o design exige acabamento arredondado.",
-      description: "Apresenta perfil baixo de cabeça arredondada para segurança contra acidentes de contato mecânico e acabamento clean.",
-      sizes: ["M4", "M5", "M6", "M8", "M10", "M12"],
-      svgType: "parafuso-allen",
-    },
-    {
-      id: "p4",
-      category: 0,
-      title: "Parafuso Allen Cabeça Chata DIN 7991",
-      norm: "DIN 7991 / ISO 10642",
-      material: "Aço Carbono e Liga / Inox",
-      grade: "Classe 10.9 / 8.8",
-      application: "Superfícies faceadas ou niveladas onde a cabeça do parafuso deve ficar embutida na chapa.",
-      description: "Cabeça escareada de precisão para acabamento nivelado impecável em chapas metálicas e guias deslizantes.",
-      sizes: ["M4", "M5", "M6", "M8", "M10", "M12", "M16"],
-      svgType: "parafuso-allen",
-    },
-    {
-      id: "p5",
-      category: 0,
-      title: "Parafuso Francês DIN 603",
-      norm: "DIN 603 / ASME B18.5",
-      material: "Aço Carbono Grau 2 / Inox",
-      grade: "Classe 4.6 / 8.8",
-      application: "Fixação de madeira em metal, carrocerias, divisórias industriais e suportes.",
-      description: "Cabeça de cogumelo sem fendas com pescoço quadrado inferior auto-travante contra giro no aperto.",
-      sizes: ["1/4\"", "5/16\"", "3/8\"", "1/2\"", "M6", "M8", "M10", "M12"],
-      svgType: "parafuso-frances",
-    },
-    {
-      id: "p6",
-      category: 0,
-      title: "Parafuso Martelo (T-Head)",
-      norm: "Norma Interna / DIN 186 / DIN 261",
-      material: "Aço Carbono Zincado e Inox",
-      grade: "Classe 8.8 / 10.9",
-      application: "Fixação rápida e ajustável em perfis metálicos estruturais e guias de fixação rápida.",
-      description: "Cabeça retangular estreita projetada para encaixar e girar 90 graus dentro de canais ou perfis metálicos.",
-      sizes: ["M8 x 20", "M10 x 25", "M12 x 30", "M16 x 40"],
-      svgType: "parafuso-martelo",
-    },
-    {
-      id: "p7",
-      category: 0,
-      title: "Parafuso Autobrocante Técnico Cabeça Flangeada",
-      norm: "DIN 7504 K / SAE J78",
-      material: "Aço Carbono Cementado / Revestido",
-      grade: "Tratamento Térmico Especial",
-      application: "Fixação rápida de telhas metálicas, painéis solares e perfis metálicos sem pré-furo.",
-      description: "Ponta broca de alta capacidade de perfuração instantânea. Modelo técnico focado em painéis solares.",
-      sizes: ["#8 x 1/2\"", "#10 x 3/4\"", "#12 x 1\"", "#14 x 1.1/2\""],
-      svgType: "parafuso-autobrocante",
-    },
-    // Categoria 1: Porcas
-    {
-      id: "p8",
-      category: 1,
-      title: "Porca Sextavada Standard DIN 934",
-      norm: "DIN 934 / ISO 4032 / ASME B18.2.2",
-      material: "Aço Carbono, Liga e Inox",
-      grade: "Grau 2, 5, 8 / Classe 8, 10",
-      application: "Fixação geral com parafusos sextavados e prisioneiros em flanges e estruturas.",
-      description: "Porca sextavada de bitolas métricas e polegadas calibrada para torque elevado sob conformidade normativa.",
-      sizes: ["M4", "M6", "M8", "M10", "M12", "M16", "M20", "M24", "1/2\"", "5/8\"", "3/4\""],
-      svgType: "porca-sextavada",
-    },
-    {
-      id: "p9",
-      category: 1,
-      title: "Porca Flangeada Serrilhada DIN 6923",
-      norm: "DIN 6923 / EN 1661",
-      material: "Aço Carbono Zincado e Inox",
-      grade: "Classe 8 / 10",
-      application: "Sistemas sujeitos a micro-vibrações, fixação de suportes e painéis metálicos.",
-      description: "Possui uma arruela cônica flangeada incorporada na base com serrilhas de travamento que evitam o afrouxamento.",
-      sizes: ["M5", "M6", "M8", "M10", "M12", "M16"],
-      svgType: "porca-flangeada",
-    },
-    {
-      id: "p10",
-      category: 1,
-      title: "Porca Sextavada Auto-Travante DIN 985",
-      norm: "DIN 985 / ISO 7040",
-      material: "Aço Carbono / Inox com Inserto de Nylon",
-      grade: "Classe 8 / 10 / Inox A2",
-      application: "Sistemas automotivos, chassis, guias mecânicas e motores sujeitos a vibrações rotacionais severas.",
-      description: "O anel interno de nylon deforma no aperto, travando mecanicamente a rosca do parafuso contra afrouxamento por vibração.",
-      sizes: ["M4", "M5", "M6", "M8", "M10", "M12", "M16", "M20", "M24"],
-      svgType: "porca-sextavada",
-    },
-    // Categoria 2: Arruelas
-    {
-      id: "p11",
-      category: 2,
-      title: "Arruela Lisa Industrial DIN 125",
-      norm: "DIN 125 / ISO 7089 / ASTM F436",
-      material: "Aço Carbono, Inox e Latão",
-      grade: "Grau Estrutural / Dureza 140 e 300 HV",
-      application: "Distribuição de carga em conexões estruturais de chapas e maquinários gerais.",
-      description: "Garante superfície lisa de assentamento, protegendo a chapa e distribuindo a pressão do aperto do parafuso.",
-      sizes: ["M4", "M6", "M8", "M10", "M12", "M16", "M20", "M24", "1/4\"", "1/2\"", "3/4\""],
-      svgType: "arruela-lisa",
-    },
-    {
-      id: "p12",
-      category: 2,
-      title: "Arruela de Pressão Helicoidal DIN 127",
-      norm: "DIN 127 B / ASME B18.21.1",
-      material: "Aço Mola Temperado / Inox A2 e A4",
-      grade: "Mola Temperada",
-      application: "Fixações de motores, caixas de engrenagem e juntas mecânicas com vibração frequente.",
-      description: "Perfil helicoidal que fornece força de mola constante, mantendo a tensão do fixador e prevenindo folgas.",
-      sizes: ["M5", "M6", "M8", "M10", "M12", "M16", "M20", "1/4\"", "3/8\"", "1/2\"", "5/8\""],
-      svgType: "arruela-pressao",
-    },
-    // Categoria 3: Chumbadores
-    {
-      id: "p13",
-      category: 3,
-      title: "Chumbador Mecânico de Expansão Parabolt",
-      norm: "ASME B18.2.1 / Especificação Técnica",
-      material: "Aço Carbono Zincado e Inox",
-      grade: "Grau Industrial",
-      application: "Instalação de colunas metálicas, máquinas pesadas, pontes rolantes e portões.",
-      description: "Chumbador de expansão controlada por torque, fornecendo fixação definitiva em concreto estrutural de alta resistência.",
-      sizes: ["1/4\" x 2\"", "3/8\" x 3\"", "1/2\" x 4\"", "5/8\" x 5\"", "3/4\" x 6\""],
-      svgType: "chumbador-mecanico",
-    },
-    {
-      id: "p14",
-      category: 3,
-      title: "Chumbador de Expansão Controlada por Deformação",
-      norm: "Normas Técnicas / DIN 325",
-      material: "Aço Carbono com Banho de Zinco",
-      grade: "Alta Resistência à Tração",
-      application: "Montagem de suportes suspensos, passagens de tubulações e estruturas de apoio civil.",
-      description: "Oferece expansão interna uniforme por deformação da bucha metálica no furo, garantindo fixação em concreto maciço.",
-      sizes: ["M6", "M8", "M10", "M12", "M16"],
-      svgType: "chumbador-mecanico",
-    },
-    {
-      id: "p15",
-      category: 3,
-      title: "Ancoragem Química em Ampola / Resinas",
-      norm: "Homologação Técnica Europeia (ETA)",
-      material: "Resina Vinilester / Epóxi de Alta Performance",
-      grade: "Fixação Química de Segurança",
-      application: "Conexão de arranques de vigas, colunas pesadas e fixação em estruturas sujeitas a cargas dinâmicas.",
-      description: "Garante adesão sem tensões de expansão no concreto, permitindo distâncias mínimas de borda e alta carga estática.",
-      sizes: ["M8", "M10", "M12", "M16", "M20", "M24"],
-      svgType: "chumbador-quimico",
-    },
-    // Categoria 4: Barras Roscadas e Rebites
-    {
-      id: "p16",
-      category: 4,
-      title: "Barra Roscada Contínua DIN 975",
-      norm: "DIN 975 / DIN 976",
-      material: "Aço Carbono, Inox e Latão",
-      grade: "Grau 5.6 / 8.8 / Classe 70",
-      application: "Suspensão de dutos, acoplamento de flanges distantes e tirantes de ancoragem civil.",
-      description: "Barras roscadas contínuas de 1 ou 2 metros, cortadas ou adaptadas sob especificação de comprimento da obra.",
-      sizes: ["1/4\"", "3/8\"", "1/2\"", "5/8\"", "M6", "M8", "M10", "M12", "M16", "M20"],
-      svgType: "barra-roscada",
-    },
-    {
-      id: "p17",
-      category: 4,
-      title: "Rebite de Repuxo Técnico (Fixação Cega)",
-      norm: "DIN 7337 / ISO 15977",
-      material: "Corpo Alumínio / Mandril Aço Carbono ou Inox",
-      grade: "Industrial",
-      application: "União cega de chapas finas, gabinetes elétricos, dutos e painéis de revestimento.",
-      description: "Garante fixação mecânica durável e estanque em chapas operando a montagem por apenas um lado do furo.",
-      sizes: ["3.2 x 8mm", "4.0 x 10mm", "4.8 x 12mm", "4.8 x 16mm", "6.4 x 20mm"],
-      svgType: "rebite",
-    },
-    // Categoria 5: Acessórios e Fixadores Civis
-    {
-      id: "p18",
-      category: 5,
-      title: "Acessórios para Cabos de Aço",
-      norm: "Normas DIN 1142 / DIN 741 / DIN 6899",
-      material: "Aço Carbono Galvanizado e Inox",
-      grade: "Grau Comercial e Industrial",
-      application: "Sistemas de tensionamento, amarração de cargas e fixação de cabos de sustentação.",
-      description: "Inclui clipes de aperto, esticadores de rosca fechada/aberta e sapatilhas de proteção contra desgaste.",
-      sizes: ["1/8\"", "3/16\"", "1/4\"", "5/16\"", "3/8\"", "1/2\"", "5/8\""],
-      svgType: "acessorio",
-    },
-    {
-      id: "p19",
-      category: 5,
-      title: "Fixadores Estruturais para Construção Civil",
-      norm: "Especificação ABNT / Normas de Engenharia",
-      material: "Aço Carbono Galvanizado a Fogo / Inox",
-      grade: "Classe de Alta Durabilidade",
-      application: "Fixações pesadas de terças, terças de telhado, contraventamentos e reforços metálicos.",
-      description: "Parafusos estruturais especiais e presilhas específicas para montagens rígidas na construção de galpões e edifícios.",
-      sizes: ["3/8\"", "1/2\"", "5/8\"", "3/4\"", "7/8\"", "M12", "M16", "M20"],
-      svgType: "acessorio",
-    },
-  ];
-
   // Filtering Logic
   const filteredProducts = products.filter((p) => {
     const matchesCategory = selectedCategory === "all" || p.category === selectedCategory;
@@ -540,6 +107,11 @@ function ProdutosContent() {
     router.push(`/contato?product=${encodeURIComponent(productName)}`);
   };
 
+  const getWhatsAppUrl = (productName: string) => {
+    const baseText = `Olá, vim pelo site! Gostaria de cotar o ${productName}, poderia me ajudar?`;
+    return `https://wa.me/551143182878?text=${encodeURIComponent(baseText)}`;
+  };
+
   return (
     <div className="flex-grow grid-bg py-12 relative min-h-screen bg-zinc-50">
       
@@ -568,12 +140,36 @@ function ProdutosContent() {
               Desenvolvemos <strong className="text-accent-yellow font-bold">fixadores personalizados</strong> — Solicite a fabricação de seu <strong className="text-accent-yellow font-bold">parafuso sob medida</strong> ou <strong className="text-accent-yellow font-bold">parafuso personalizado</strong> diretamente com nossa engenharia.
             </p>
           </div>
-          <button
-            onClick={() => handleRequestQuote("Fixadores Especiais Sob Desenho/Amostra")}
-            className="self-start sm:self-center px-4 py-2.5 bg-accent-yellow hover:bg-accent-yellow-hover text-zinc-950 rounded-lg text-xs font-bold tracking-wider transition-colors shrink-0 uppercase"
+          <a
+            href={getWhatsAppUrl("Fixadores Especiais Sob Desenho/Amostra")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative overflow-hidden group/btn z-0 self-start sm:self-center px-4 py-2.5 bg-zinc-950 text-white rounded-lg text-xs font-bold tracking-wider active:scale-95 transition-all duration-300 flex items-center justify-center gap-1.5 shrink-0 uppercase cursor-pointer"
           >
-            Consultar Especial
-          </button>
+            {/* Expanding circle background */}
+            <span className="absolute inset-0 bg-emerald-600 rounded-full scale-0 group-hover/btn:scale-[2.5] transition-transform duration-500 ease-out -z-10 origin-center" />
+            
+            {/* WhatsApp Icon SVG */}
+            <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5 text-accent-yellow shrink-0 group-hover/btn:text-white transition-colors duration-300">
+              <path d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.76.457 3.414 1.258 4.86L2 22l5.312-1.394c1.408.767 3.013 1.206 4.698 1.206 5.506 0 9.988-4.482 9.988-9.988s-4.482-9.988-9.988-9.988zm4.78 13.06c-.2.56-1.16 1.08-1.6 1.12-.4.04-.92.22-2.74-.5-2.32-.92-3.8-3.28-3.92-3.44-.12-.16-1.04-1.38-1.04-2.63 0-1.25.64-1.86.88-2.12.2-.22.44-.28.58-.28.14 0 .28 0 .4.02.12.02.28-.04.44.34.16.38.56 1.36.6 1.48.04.1.06.22 0 .34-.06.12-.1.2-.2.32-.1.1-.2.24-.3.34-.1.12-.22.24-.1.44.12.2.54.88 1.14 1.42.78.7 1.44.92 1.64 1.02.2.1.32.08.44-.06.12-.14.52-.6.66-.8.14-.2.28-.16.48-.08.2.08 1.26.6 1.48.7.22.1.36.16.42.26.06.1.06.56-.14 1.12z" />
+            </svg>
+            
+            <span>Consultar Especial</span>
+
+            {/* Sliding External Arrow Icon */}
+            <svg 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2.5" 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              className="h-3 w-0 opacity-0 group-hover/btn:w-3 group-hover/btn:opacity-100 transition-all duration-300 transform translate-x-2 group-hover/btn:translate-x-0 shrink-0 text-white"
+            >
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -714,9 +310,9 @@ function ProdutosContent() {
                     key={product.id}
                     className="border border-zinc-200 rounded-xl bg-white hover:border-accent-yellow/35 transition-all duration-300 flex flex-col justify-between group overflow-hidden shadow-sm"
                   >
-                    {/* Top Focused Visual Blueprint Box */}
+                    {/* Top Focused Visual Box */}
                     <div className="bg-zinc-50/70 p-6 border-b border-zinc-100 flex items-center justify-center relative min-h-[180px] group-hover:bg-zinc-50 transition-colors">
-                      <ProductBlueprintSVG type={product.svgType} />
+                      <ProductImage src={product.image} alt={product.title} />
                       <span className="absolute top-2 left-3 text-[8px] font-mono text-zinc-400 border border-zinc-200 bg-white px-1.5 py-0.5 rounded">
                         NORM: {product.norm.split(" / ")[0]}
                       </span>
@@ -763,13 +359,36 @@ function ProdutosContent() {
 
                     {/* Action button */}
                     <div className="p-5 pt-0 mt-auto space-y-2">
-                      <button
-                        onClick={() => handleRequestQuote(product.title)}
-                        className="w-full py-2.5 bg-accent-yellow hover:bg-accent-yellow-hover text-zinc-950 rounded-lg text-xs font-black tracking-wider transition-all duration-250 flex items-center justify-center gap-1.5 uppercase border border-accent-yellow/20 cursor-pointer"
+                      <a
+                        href={getWhatsAppUrl(product.title)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative overflow-hidden group/btn z-0 w-full py-2.5 bg-zinc-900 text-white rounded-lg font-bold text-xs tracking-wider active:scale-95 transition-all duration-300 flex items-center justify-center gap-1.5 uppercase cursor-pointer border border-zinc-800/10 shadow-sm"
                       >
-                        <FileText className="h-4 w-4" />
-                        Solicitar Cotação
-                      </button>
+                        {/* Expanding circle background */}
+                        <span className="absolute inset-0 bg-emerald-600 rounded-full scale-0 group-hover/btn:scale-[2.5] transition-transform duration-500 ease-out -z-10 origin-center" />
+                        
+                        {/* WhatsApp Icon SVG */}
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-accent-yellow shrink-0 group-hover/btn:text-white transition-colors duration-300">
+                          <path d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.76.457 3.414 1.258 4.86L2 22l5.312-1.394c1.408.767 3.013 1.206 4.698 1.206 5.506 0 9.988-4.482 9.988-9.988s-4.482-9.988-9.988-9.988zm4.78 13.06c-.2.56-1.16 1.08-1.6 1.12-.4.04-.92.22-2.74-.5-2.32-.92-3.8-3.28-3.92-3.44-.12-.16-1.04-1.38-1.04-2.63 0-1.25.64-1.86.88-2.12.2-.22.44-.28.58-.28.14 0 .28 0 .4.02.12.02.28-.04.44.34.16.38.56 1.36.6 1.48.04.1.06.22 0 .34-.06.12-.1.2-.2.32-.1.1-.2.24-.3.34-.1.12-.22.24-.1.44.12.2.54.88 1.14 1.42.78.7 1.44.92 1.64 1.02.2.1.32.08.44-.06.12-.14.52-.6.66-.8.14-.2.28-.16.48-.08.2.08 1.26.6 1.48.7.22.1.36.16.42.26.06.1.06.56-.14 1.12z" />
+                        </svg>
+                        
+                        <span>Cote pelo Whatsapp</span>
+
+                        {/* Sliding External Arrow Icon */}
+                        <svg 
+                          viewBox="0 0 24 24" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          strokeWidth="2.5" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          className="h-3.5 w-0 opacity-0 group-hover/btn:w-3.5 group-hover/btn:opacity-100 transition-all duration-300 transform translate-x-2 group-hover/btn:translate-x-0 shrink-0 text-white"
+                        >
+                          <line x1="7" y1="17" x2="17" y2="7"></line>
+                          <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                      </a>
                       
                       <button
                         onClick={() => setSelectedProduct(product)}
@@ -835,10 +454,10 @@ function ProdutosContent() {
             {/* Modal Body */}
             <div className="p-6 sm:p-8 space-y-6">
               
-              {/* Blueprint Display in Modal */}
+              {/* Product Image Display in Modal */}
               <div className="bg-zinc-50 border border-zinc-200 rounded-xl p-4 flex items-center justify-center">
                 <div className="w-48">
-                  <ProductBlueprintSVG type={selectedProduct.svgType} />
+                  <ProductImage src={selectedProduct.image} alt={selectedProduct.title} />
                 </div>
               </div>
 
@@ -903,16 +522,37 @@ function ProdutosContent() {
             {/* Modal Footer */}
             <div className="p-6 border-t border-zinc-150 bg-zinc-50 flex items-center justify-between">
               <span className="text-xs text-zinc-500 font-medium">Fornecimento em lotes e embalagem industrial.</span>
-              <button
-                onClick={() => {
-                  handleRequestQuote(selectedProduct.title);
-                  setSelectedProduct(null);
-                }}
-                className="px-6 py-3 bg-accent-yellow hover:bg-accent-yellow-hover text-zinc-950 rounded-lg font-black text-sm tracking-wider active:scale-95 transition-all duration-300 flex items-center gap-2 border border-accent-yellow/20"
+              <a
+                href={getWhatsAppUrl(selectedProduct.title)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setSelectedProduct(null)}
+                className="relative overflow-hidden group/btn z-0 px-6 py-3 bg-zinc-900 text-white rounded-lg font-bold text-sm tracking-wider active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer"
               >
-                <FileText className="h-4 w-4" />
-                SOLICITAR COTAÇÃO
-              </button>
+                {/* Expanding circle background */}
+                <span className="absolute inset-0 bg-emerald-600 rounded-full scale-0 group-hover/btn:scale-[2.5] transition-transform duration-500 ease-out -z-10 origin-center" />
+                
+                {/* WhatsApp Icon SVG */}
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-accent-yellow shrink-0 group-hover/btn:text-white transition-colors duration-300">
+                  <path d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.76.457 3.414 1.258 4.86L2 22l5.312-1.394c1.408.767 3.013 1.206 4.698 1.206 5.506 0 9.988-4.482 9.988-9.988s-4.482-9.988-9.988-9.988zm4.78 13.06c-.2.56-1.16 1.08-1.6 1.12-.4.04-.92.22-2.74-.5-2.32-.92-3.8-3.28-3.92-3.44-.12-.16-1.04-1.38-1.04-2.63 0-1.25.64-1.86.88-2.12.2-.22.44-.28.58-.28.14 0 .28 0 .4.02.12.02.28-.04.44.34.16.38.56 1.36.6 1.48.04.1.06.22 0 .34-.06.12-.1.2-.2.32-.1.1-.2.24-.3.34-.1.12-.22.24-.1.44.12.2.54.88 1.14 1.42.78.7 1.44.92 1.64 1.02.2.1.32.08.44-.06.12-.14.52-.6.66-.8.14-.2.28-.16.48-.08.2.08 1.26.6 1.48.7.22.1.36.16.42.26.06.1.06.56-.14 1.12z" />
+                </svg>
+                
+                <span>Cote pelo Whatsapp</span>
+
+                {/* Sliding External Arrow Icon */}
+                <svg 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  className="h-3.5 w-0 opacity-0 group-hover/btn:w-3.5 group-hover/btn:opacity-100 transition-all duration-300 transform translate-x-2 group-hover/btn:translate-x-0 shrink-0 text-white"
+                >
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
             </div>
 
           </div>
