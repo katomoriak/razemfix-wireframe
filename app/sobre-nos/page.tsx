@@ -10,7 +10,6 @@ import {
   Hammer,
   Layers,
 } from "lucide-react";
-import { FastenersBlueprintSVG } from "../components/TechnicalDrawings";
 
 export default function SobreNos() {
   const compliancePoints = [
@@ -38,7 +37,38 @@ export default function SobreNos() {
   ];
 
   return (
-    <div className="flex-grow grid-bg py-16 relative bg-zinc-50 text-zinc-900">
+    <div className="flex-grow grid-bg py-16 relative bg-zinc-50 text-zinc-900 overflow-hidden">
+      {/* Background Decorative Tech Hexagons */}
+      <div className="absolute left-[-10%] sm:left-[-12%] top-[10%] w-[320px] h-[320px] sm:w-[480px] sm:h-[480px] lg:w-[620px] lg:h-[620px] text-accent-yellow opacity-[0.12] pointer-events-none select-none z-0 animate-slow-spin">
+        <svg viewBox="0 0 100 100" className="w-full h-full" fill="none">
+          <path 
+            d="M 46.54,4 Q 50,2 53.46,4 L 88.14,24 Q 91.6,26 91.6,30 L 91.6,70 Q 91.6,74 88.14,76 L 53.46,96 Q 50,98 46.54,96 L 11.86,76 Q 8.4,74 8.4,70 L 8.4,30 Q 8.4,26 11.86,24 Z" 
+            stroke="currentColor" 
+            strokeWidth="0.8" 
+          />
+        </svg>
+      </div>
+
+      <div className="absolute right-[-10%] sm:right-[-12%] top-[40%] w-[320px] h-[320px] sm:w-[480px] sm:h-[480px] lg:w-[620px] lg:h-[620px] text-zinc-400 opacity-[0.15] pointer-events-none select-none z-0 animate-slow-spin-reverse">
+        <svg viewBox="0 0 100 100" className="w-full h-full" fill="none">
+          <path 
+            d="M 46.54,4 Q 50,2 53.46,4 L 88.14,24 Q 91.6,26 91.6,30 L 91.6,70 Q 91.6,74 88.14,76 L 53.46,96 Q 50,98 46.54,96 L 11.86,76 Q 8.4,74 8.4,70 L 8.4,30 Q 8.4,26 11.86,24 Z" 
+            stroke="currentColor" 
+            strokeWidth="0.8" 
+          />
+        </svg>
+      </div>
+
+      <div className="absolute left-[-8%] sm:left-[-10%] bottom-[10%] w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] text-accent-yellow opacity-[0.08] pointer-events-none select-none z-0 animate-slow-spin">
+        <svg viewBox="0 0 100 100" className="w-full h-full" fill="none">
+          <path 
+            d="M 46.54,4 Q 50,2 53.46,4 L 88.14,24 Q 91.6,26 91.6,30 L 91.6,70 Q 91.6,74 88.14,76 L 53.46,96 Q 50,98 46.54,96 L 11.86,76 Q 8.4,74 8.4,70 L 8.4,30 Q 8.4,26 11.86,24 Z" 
+            stroke="currentColor" 
+            strokeWidth="0.8" 
+          />
+        </svg>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 relative z-10">
         
         {/* Header Hero Section */}
@@ -136,10 +166,48 @@ export default function SobreNos() {
           </div>
         </div>
 
+        {/* Physical Headquarters / Infrastructure Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 border-t border-zinc-200">
+          <div className="lg:col-span-7 space-y-6">
+            <span className="text-xs font-bold tracking-wider text-accent-yellow-hover uppercase block">Estrutura e Localização</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight">
+              Sede Estratégica em São Caetano do Sul
+            </h2>
+            <p className="text-sm sm:text-base text-zinc-650 font-light leading-relaxed">
+              Contamos com uma estrutura logística integrada para garantir o fluxo contínuo de fornecimento. Nossa localização estratégica na região do ABC Paulista nos permite distribuir fixadores industriais com rapidez e eficiência para as principais rodovias e polos industriais de todo o Brasil.
+            </p>
+            <p className="text-sm sm:text-base text-zinc-650 font-light leading-relaxed">
+              Com processos otimizados de recebimento, inspeção rigorosa de qualidade e expedição ágil, asseguramos que cada pedido atenda às especificações técnicas e prazos mais estritos de nossos parceiros de negócios.
+            </p>
+          </div>
+
+          <div className="lg:col-span-5 relative rounded-2xl overflow-hidden shadow-xl border border-zinc-200 group" style={{ minHeight: '320px' }}>
+            <Image
+              src="/fachada.png"
+              alt="Fachada da Razemfix"
+              fill
+              className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/40 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-4 left-4 right-4 z-10">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-zinc-950/75 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider rounded-full border border-white/10">
+                Sede Razemfix — São Caetano do Sul / SP
+              </span>
+            </div>
+          </div>
+        </div>
+
         {/* Technical Drawings & Precision Blueprint Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 border-t border-zinc-200">
-          <div className="lg:col-span-5 hidden lg:block border border-zinc-200 rounded-2xl p-4 bg-zinc-900 shadow-xl">
-            <FastenersBlueprintSVG className="w-full h-auto" />
+          <div className="lg:col-span-5 border border-zinc-200 rounded-2xl p-10 bg-white shadow-xl flex items-center justify-center min-h-[250px] lg:min-h-[350px]">
+            <Image
+              src="/razemfix_logotipocompleto.svg"
+              alt="Logo Razemfix"
+              width={500}
+              height={200}
+              className="w-full h-auto max-w-[280px] sm:max-w-[360px] object-contain transition-transform duration-500 hover:scale-105"
+            />
           </div>
 
           <div className="lg:col-span-7 space-y-6">

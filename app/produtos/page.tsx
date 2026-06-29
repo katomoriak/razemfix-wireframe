@@ -109,7 +109,7 @@ function ProdutosContent() {
 
   const getWhatsAppUrl = (productName: string) => {
     const baseText = `Olá, vim pelo site! Gostaria de cotar o ${productName}, poderia me ajudar?`;
-    return `https://wa.me/551143182878?text=${encodeURIComponent(baseText)}`;
+    return `https://wa.me/5511930736051?text=${encodeURIComponent(baseText)}`;
   };
 
   return (

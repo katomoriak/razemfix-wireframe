@@ -32,8 +32,6 @@ export default function RestrictedNavigationToast() {
 
       // Define routes we want to restrict
       const restrictedPaths = [
-        "/sobre-nos",
-        "/contato",
         "/privacidade",
       ];
 

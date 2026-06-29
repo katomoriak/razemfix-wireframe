@@ -2,12 +2,29 @@
 
 import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function FloatingWhatsApp() {
   const [showTooltip, setShowTooltip] = useState(false);
   const [isAnimatingIn, setIsAnimatingIn] = useState(false);
   const [currentMessage, setCurrentMessage] = useState(0);
   const [isDismissed, setIsDismissed] = useState(false);
+  const pathname = usePathname();
+
+  const getPageFriendlyName = (path: string) => {
+    if (path === "/") return "Home";
+    if (path.startsWith("/produtos")) return "Produtos";
+    if (path.startsWith("/sobre-nos")) return "Sobre Nós";
+    if (path.startsWith("/contato")) return "Contato";
+    if (path.startsWith("/privacidade")) return "Política de Privacidade";
+    return "Razemfix";
+  };
+
+  const getWhatsAppUrl = () => {
+    const pageName = getPageFriendlyName(pathname);
+    const baseText = `Olá, estava vendo a página ${pageName} do site e decidi entrar em contato com vocês! Gostaria de mais informações, podem me ajudar?`;
+    return `https://wa.me/5511930736051?text=${encodeURIComponent(baseText)}`;
+  };
 
   const messages = [
     "Olá! Procura parafusos ou fixadores de alta qualidade?",
@@ -101,7 +118,7 @@ export default function FloatingWhatsApp() {
         {/* Hexagonal Button with Drop Shadow Wrapper to prevent shadow clipping */}
         <div className="pointer-events-auto filter drop-shadow-md hover:drop-shadow-xl transition-all duration-300">
           <a
-            href="https://wa.me/551143182878"
+            href={getWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
             className="relative overflow-hidden w-14 h-14 bg-accent-yellow hover:bg-emerald-600 text-zinc-950 hover:text-white rounded-none active:scale-95 transition-all duration-300 flex items-center justify-center group animate-pulse-subtle hover:animate-none cursor-pointer"

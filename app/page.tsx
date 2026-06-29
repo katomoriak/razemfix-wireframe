@@ -22,6 +22,9 @@ import {
 export default function Home() {
   const heroRef = React.useRef<HTMLElement>(null);
   const marketsRef = React.useRef<HTMLElement>(null);
+  const whatsappUrl = `https://wa.me/5511930736051?text=${encodeURIComponent(
+    "Olá, estava vendo a página Home do site e decidi entrar em contato com vocês! Gostaria de mais informações, podem me ajudar?"
+  )}`;
 
   const updateMousePosition = (e: React.MouseEvent<HTMLElement>, ref: React.RefObject<HTMLElement | null>) => {
     if (!ref.current) return;
@@ -209,7 +212,7 @@ export default function Home() {
                 </Link>
                 
                 <a
-                  href="https://wa.me/551143182878"
+                  href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative overflow-hidden group z-0 w-auto sm:min-w-[310px] px-6 sm:px-8 py-4 bg-zinc-900 text-white rounded-lg font-bold text-sm tracking-wider active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap animate-pulse-subtle hover:animate-none"
@@ -644,7 +647,7 @@ export default function Home() {
 
                 <div className="pt-2 relative z-10 space-y-3">
                   <a
-                    href="https://wa.me/551143182878"
+                    href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="relative overflow-hidden group z-0 flex items-center justify-center gap-2 w-full px-6 py-4 bg-accent-yellow text-zinc-950 rounded-lg font-bold text-sm tracking-wider active:scale-95 transition-all duration-300 border border-accent-yellow/20 whitespace-nowrap animate-pulse-subtle hover:animate-none"

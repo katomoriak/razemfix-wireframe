@@ -8,8 +8,36 @@ import { Menu, X, FileText, PhoneCall } from "lucide-react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  const categories = [
+    "Parafusos",
+    "Porcas",
+    "Arruelas",
+    "Chumbadores Mecânicos",
+    "Chumbadores Químicos",
+    "Rebites",
+    "Fixadores Para Painéis Solares",
+    "Acessórios e Fixadores",
+    "Barras Roscadas",
+  ];
+
+  const getPageFriendlyName = (path: string) => {
+    if (path === "/") return "Home";
+    if (path.startsWith("/produtos")) return "Produtos";
+    if (path.startsWith("/sobre-nos")) return "Sobre Nós";
+    if (path.startsWith("/contato")) return "Contato";
+    if (path.startsWith("/privacidade")) return "Política de Privacidade";
+    return "Razemfix";
+  };
+
+  const getWhatsAppUrl = () => {
+    const pageName = getPageFriendlyName(pathname);
+    const baseText = `Olá, estava vendo a página ${pageName} do site e decidi entrar em contato com vocês! Gostaria de mais informações, podem me ajudar?`;
+    return `https://wa.me/5511930736051?text=${encodeURIComponent(baseText)}`;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,6 +85,73 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => {
+              if (item.name === "PRODUTOS") {
+                const isActive = pathname.startsWith("/produtos");
+                return (
+                  <div key={item.name} className="relative group py-2">
+                    <Link
+                      href={item.path}
+                      className={`text-sm font-bold tracking-wider transition-colors duration-200 flex items-center gap-1 ${
+                        isActive
+                          ? "text-zinc-950"
+                          : "text-zinc-600 hover:text-zinc-900"
+                      }`}
+                    >
+                      {item.name}
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-3 w-3 text-zinc-500 transition-transform duration-200 group-hover:rotate-180"
+                      >
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                      {isActive && (
+                        <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-yellow rounded-full" />
+                      )}
+                    </Link>
+
+                    {/* Dropdown Menu */}
+                    <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                      <div className="bg-white border border-zinc-200 rounded-xl shadow-xl overflow-hidden py-2 relative">
+                        {/* Background Decorative Tech Hexagon */}
+                        <div className="absolute right-[-20px] bottom-[-20px] w-28 h-28 text-accent-yellow opacity-[0.07] pointer-events-none select-none z-0">
+                          <svg viewBox="0 0 100 100" className="w-full h-full" fill="none">
+                            <path 
+                              d="M 46.54,4 Q 50,2 53.46,4 L 88.14,24 Q 91.6,26 91.6,30 L 91.6,70 Q 91.6,74 88.14,76 L 53.46,96 Q 50,98 46.54,96 L 11.86,76 Q 8.4,74 8.4,70 L 8.4,30 Q 8.4,26 11.86,24 Z" 
+                              stroke="currentColor" 
+                              strokeWidth="1.5" 
+                            />
+                          </svg>
+                        </div>
+
+                        <div className="max-h-[350px] overflow-y-auto relative z-10 pt-1">
+
+                          {categories.map((cat, index) => (
+                            <Link
+                              key={cat}
+                              href={`/produtos?cat=${index}`}
+                              className="flex items-center gap-2.5 px-4 py-2.5 text-xs text-zinc-600 hover:text-zinc-950 hover:bg-zinc-50 transition-colors group/item"
+                            >
+                              <svg
+                                viewBox="0 0 100 100"
+                                className="h-2 w-2 text-zinc-350 group-hover/item:text-accent-yellow transition-colors duration-250 shrink-0"
+                                fill="currentColor"
+                              >
+                                <path d="M 46.54,4 Q 50,2 53.46,4 L 88.14,24 Q 91.6,26 91.6,30 L 91.6,70 Q 91.6,74 88.14,76 L 53.46,96 Q 50,98 46.54,96 L 11.86,76 Q 8.4,74 8.4,70 L 8.4,30 Q 8.4,26 11.86,24 Z" />
+                              </svg>
+                              <span>{cat}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
               const isActive = pathname === item.path;
               return (
                 <Link
@@ -80,7 +175,7 @@ export default function Header() {
           {/* CTA Buttons (Desktop) */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="https://wa.me/551143182878"
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className="relative overflow-hidden group z-0 flex items-center justify-center gap-2 px-5 py-2.5 bg-accent-yellow text-zinc-950 rounded-lg font-bold text-xs tracking-wider active:scale-95 transition-all duration-300 border border-accent-yellow/20 whitespace-nowrap animate-pulse-subtle hover:animate-none"
@@ -132,6 +227,65 @@ export default function Header() {
       >
         <div className="px-4 pt-2 pb-6 space-y-2 shadow-xl bg-white">
           {navItems.map((item) => {
+            if (item.name === "PRODUTOS") {
+              const isActive = pathname.startsWith("/produtos");
+              return (
+                <div key={item.name} className="space-y-1">
+                  <div className="flex items-center justify-between px-4 py-3 rounded-lg text-base font-bold tracking-wider transition-all duration-200">
+                    <Link
+                      href={item.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`flex-grow ${
+                        isActive
+                          ? "text-zinc-950 font-extrabold"
+                          : "text-zinc-600 hover:text-zinc-900"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                    <button
+                      onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                      className="p-2 text-zinc-500 hover:text-zinc-900"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        className={`h-4 w-4 transition-transform duration-200 ${
+                          mobileProductsOpen ? "rotate-180" : ""
+                        }`}
+                      >
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                  
+                  {mobileProductsOpen && (
+                    <div className="pl-6 space-y-1 border-l border-zinc-250 ml-4 mb-2">
+
+                      {categories.map((cat, index) => (
+                        <Link
+                          key={cat}
+                          href={`/produtos?cat=${index}`}
+                          onClick={() => setIsOpen(false)}
+                          className="flex items-center gap-2 py-2 text-sm text-zinc-500 hover:text-zinc-900 group/item"
+                        >
+                          <svg
+                            viewBox="0 0 100 100"
+                            className="h-1.5 w-1.5 text-zinc-300 group-hover/item:text-accent-yellow transition-colors duration-250 shrink-0"
+                            fill="currentColor"
+                          >
+                            <path d="M 46.54,4 Q 50,2 53.46,4 L 88.14,24 Q 91.6,26 91.6,30 L 91.6,70 Q 91.6,74 88.14,76 L 53.46,96 Q 50,98 46.54,96 L 11.86,76 Q 8.4,74 8.4,70 L 8.4,30 Q 8.4,26 11.86,24 Z" />
+                          </svg>
+                          <span>{cat}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
             const isActive = pathname === item.path;
             return (
               <Link
@@ -150,7 +304,7 @@ export default function Header() {
           })}
           <div className="pt-4 px-4 flex flex-col gap-3">
             <a
-              href="https://wa.me/551143182878"
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}

@@ -115,7 +115,8 @@ export default function Footer() {
                 <Clock className="h-4 w-4 text-zinc-900 mt-0.5 flex-shrink-0" />
                 <div>
                   <span className="block text-xs text-zinc-600 font-extrabold">Horário de Atendimento</span>
-                  <span className="font-bold text-zinc-900">Seg a Sex: 08:00 às 17:48</span>
+                  <span className="font-bold text-zinc-900 block">Seg a Sex: 08:00 às 17:48</span>
+                  <span className="block text-[10px] text-zinc-550 font-semibold mt-0.5">Com almoço das 12:00 às 13:00</span>
                 </div>
               </li>
               <li className="flex items-start gap-2.5">

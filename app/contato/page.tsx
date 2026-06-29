@@ -19,6 +19,9 @@ import { ConsultingSVG } from "../components/TechnicalDrawings";
 function ContatoContent() {
   const searchParams = useSearchParams();
   const productParam = searchParams.get("product");
+  const whatsappUrl = `https://wa.me/5511930736051?text=${encodeURIComponent(
+    "Olá, estava vendo a página Contato do site e decidi entrar em contato com vocês! Gostaria de mais informações, podem me ajudar?"
+  )}`;
 
   // Form State
   const [cnpj, setCnpj] = useState("");
@@ -64,8 +67,29 @@ function ContatoContent() {
   };
 
   return (
-    <div className="flex-grow grid-bg py-12 relative min-h-screen bg-zinc-50 text-zinc-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex-grow grid-bg py-12 relative min-h-screen bg-zinc-50 text-zinc-900 overflow-hidden">
+      {/* Background Decorative Tech Hexagons */}
+      <div className="absolute left-[-10%] sm:left-[-12%] top-[15%] w-[320px] h-[320px] sm:w-[480px] sm:h-[480px] lg:w-[620px] lg:h-[620px] text-accent-yellow opacity-[0.15] pointer-events-none select-none z-0 animate-slow-spin">
+        <svg viewBox="0 0 100 100" className="w-full h-full" fill="none">
+          <path 
+            d="M 46.54,4 Q 50,2 53.46,4 L 88.14,24 Q 91.6,26 91.6,30 L 91.6,70 Q 91.6,74 88.14,76 L 53.46,96 Q 50,98 46.54,96 L 11.86,76 Q 8.4,74 8.4,70 L 8.4,30 Q 8.4,26 11.86,24 Z" 
+            stroke="currentColor" 
+            strokeWidth="0.8" 
+          />
+        </svg>
+      </div>
+
+      <div className="absolute right-[-10%] sm:right-[-12%] bottom-[15%] w-[320px] h-[320px] sm:w-[480px] sm:h-[480px] lg:w-[620px] lg:h-[620px] text-zinc-400 opacity-[0.2] pointer-events-none select-none z-0 animate-slow-spin-reverse">
+        <svg viewBox="0 0 100 100" className="w-full h-full" fill="none">
+          <path 
+            d="M 46.54,4 Q 50,2 53.46,4 L 88.14,24 Q 91.6,26 91.6,30 L 91.6,70 Q 91.6,74 88.14,76 L 53.46,96 Q 50,98 46.54,96 L 11.86,76 Q 8.4,74 8.4,70 L 8.4,30 Q 8.4,26 11.86,24 Z" 
+            stroke="currentColor" 
+            strokeWidth="0.8" 
+          />
+        </svg>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Page Title */}
         <div className="mb-12 space-y-3 text-center lg:text-left">
@@ -93,7 +117,19 @@ function ContatoContent() {
                   <ConsultingSVG />
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Brand decorative hexagon inside form */}
+                <div className="absolute -left-6 bottom-10 w-24 h-24 text-accent-yellow/15 pointer-events-none select-none z-0">
+                  <svg viewBox="0 0 100 100" className="w-full h-full fill-none" stroke="currentColor" strokeWidth="1">
+                    <path d="M 46.54,4 Q 50,2 53.46,4 L 88.14,24 Q 91.6,26 91.6,30 L 91.6,70 Q 91.6,74 88.14,76 L 53.46,96 Q 50,98 46.54,96 L 11.86,76 Q 8.4,74 8.4,70 L 8.4,30 Q 8.4,26 11.86,24 Z" />
+                  </svg>
+                </div>
+
+                <div className="mb-8 border-b border-zinc-100 pb-4 relative z-10">
+                  <h2 className="text-xl sm:text-2xl font-black text-zinc-950">Solicite Orçamento Técnico</h2>
+                  <p className="text-sm text-zinc-500 mt-1 font-light">Preencha os dados abaixo e nossa equipe comercial entrará em contato com você em breve.</p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                   
                   {/* Seção 1: Dados Corporativos */}
                   <div className="space-y-4">
@@ -359,10 +395,18 @@ function ContatoContent() {
           {/* RIGHT: CONTACT INFORMATION & CHANNELS */}
           <div className="lg:col-span-4 space-y-6">
             
-            <div className="border border-zinc-200 rounded-2xl bg-white p-6 space-y-6 shadow-sm">
-              <h3 className="text-sm font-bold tracking-widest text-zinc-950 uppercase border-l-2 border-accent-yellow pl-3">
-                Canais Diretos
-              </h3>
+            <div className="border border-zinc-200 rounded-2xl bg-white p-6 space-y-5 shadow-sm relative overflow-hidden">
+              {/* Brand decorative hexagon */}
+              <div className="absolute -right-6 top-1/2 -translate-y-1/2 w-20 h-20 text-accent-yellow/20 pointer-events-none select-none z-0">
+                <svg viewBox="0 0 100 100" className="w-full h-full fill-none" stroke="currentColor" strokeWidth="1">
+                  <path d="M 46.54,4 Q 50,2 53.46,4 L 88.14,24 Q 91.6,26 91.6,30 L 91.6,70 Q 91.6,74 88.14,76 L 53.46,96 Q 50,98 46.54,96 L 11.86,76 Q 8.4,74 8.4,70 L 8.4,30 Q 8.4,26 11.86,24 Z" />
+                </svg>
+              </div>
+
+              <div className="relative z-10 space-y-5">
+                <h3 className="text-sm font-bold tracking-widest text-zinc-950 uppercase border-l-2 border-accent-yellow pl-3">
+                  Canais Diretos
+                </h3>
               
               <ul className="space-y-4 text-sm text-zinc-600 font-light">
                 <li className="flex gap-3 items-start">
@@ -400,16 +444,60 @@ function ContatoContent() {
                     <span className="font-bold text-zinc-950 block mt-0.5">
                       Seg a Sex: 08:00 às 17:48
                     </span>
+                    <span className="text-[10px] text-zinc-400 block mt-0.5 font-semibold">
+                      Com almoço das 12:00 às 13:00
+                    </span>
                   </div>
                 </li>
               </ul>
+
+              <div className="pt-2 border-t border-zinc-100">
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative overflow-hidden group z-0 w-full px-5 py-3.5 bg-zinc-900 text-white rounded-lg font-bold text-xs tracking-wider active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap animate-pulse-subtle hover:animate-none shadow-sm cursor-pointer"
+                >
+                  {/* Expanding circle background */}
+                  <span className="absolute inset-0 bg-emerald-600 rounded-full scale-0 group-hover:scale-[2.5] transition-transform duration-500 ease-out -z-10 origin-center" />
+                  
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-accent-yellow shrink-0 group-hover:text-white transition-colors duration-300">
+                    <path d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.76.457 3.414 1.258 4.86L2 22l5.312-1.394c1.408.767 3.013 1.206 4.698 1.206 5.506 0 9.988-4.482 9.988-9.988s-4.482-9.988-9.988-9.988zm4.78 13.06c-.2.56-1.16 1.08-1.6 1.12-.4.04-.92.22-2.74-.5-2.32-.92-3.8-3.28-3.92-3.44-.12-.16-1.04-1.38-1.04-2.63 0-1.25.64-1.86.88-2.12.2-.22.44-.28.58-.28.14 0 .28 0 .4.02.12.02.28-.04.44.34.16.38.56 1.36.6 1.48.04.1.06.22 0 .34-.06.12-.1.2-.2.32-.1.1-.2.24-.3.34-.1.12-.22.24-.1.44.12.2.54.88 1.14 1.42.78.7 1.44.92 1.64 1.02.2.1.32.08.44-.06.12-.14.52-.6.66-.8.14-.2.28-.16.48-.08.2.08 1.26.6 1.48.7.22.1.36.16.42.26.06.1.06.56-.14 1.12z" />
+                  </svg>
+                  
+                  <span className="group-hover:text-white transition-colors duration-300">CONTATE-NOS PELO WHATSAPP</span>
+
+                  {/* Sliding External Arrow Icon */}
+                  <svg 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2.5" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    className="h-3 w-0 opacity-0 group-hover:w-3 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 shrink-0 text-white"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </a>
+              </div>
+              </div>
             </div>
 
             {/* Headquarters Address Card */}
-            <div className="border border-zinc-200 rounded-2xl bg-white p-6 space-y-4 shadow-sm">
-              <h3 className="text-sm font-bold tracking-widest text-zinc-950 uppercase border-l-2 border-accent-yellow pl-3">
-                Matriz Industrial
-              </h3>
+            <div className="border border-zinc-200 rounded-2xl bg-white p-6 space-y-4 shadow-sm relative overflow-hidden">
+              {/* Brand decorative hexagon */}
+              <div className="absolute -right-6 top-12 w-20 h-20 text-accent-yellow/20 pointer-events-none select-none z-0">
+                <svg viewBox="0 0 100 100" className="w-full h-full fill-none" stroke="currentColor" strokeWidth="1">
+                  <path d="M 46.54,4 Q 50,2 53.46,4 L 88.14,24 Q 91.6,26 91.6,30 L 91.6,70 Q 91.6,74 88.14,76 L 53.46,96 Q 50,98 46.54,96 L 11.86,76 Q 8.4,74 8.4,70 L 8.4,30 Q 8.4,26 11.86,24 Z" />
+                </svg>
+              </div>
+
+              <div className="relative z-10 space-y-4">
+                <h3 className="text-sm font-bold tracking-widest text-zinc-950 uppercase border-l-2 border-accent-yellow pl-3">
+                  Matriz Industrial
+                </h3>
               
               <div className="flex gap-3 items-start text-sm text-zinc-650 font-light">
                 <MapPin className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
@@ -419,6 +507,21 @@ function ContatoContent() {
                   <span className="block">Olímpico • São Caetano do Sul - SP</span>
                   <span className="block text-xs font-semibold mt-1">CEP 09570-400</span>
                 </div>
+              </div>
+
+              {/* Google Maps Iframe Embed */}
+              <div className="w-full h-48 rounded-xl overflow-hidden border border-zinc-200 shadow-inner mt-4 relative">
+                <iframe
+                  title="Localização da Matriz Industrial Razemfix"
+                  src="https://maps.google.com/maps?q=Rua%20Cavalheiro%20Ernesto%20Giuliano,%20236,%20Ol%C3%ADmpico,%20S%C3%A3o%20Caetano%20do%20Sul%20-%20SP&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
               </div>
             </div>
 
