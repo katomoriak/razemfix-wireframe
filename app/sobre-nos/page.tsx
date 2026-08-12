@@ -10,6 +10,7 @@ import {
   Hammer,
   Layers,
 } from "lucide-react";
+import HexBgWrapper from "../components/HexBgWrapper";
 
 export default function SobreNos() {
   const compliancePoints = [
@@ -37,7 +38,7 @@ export default function SobreNos() {
   ];
 
   return (
-    <div className="flex-grow grid-bg py-16 relative bg-zinc-50 text-zinc-900 overflow-hidden">
+    <HexBgWrapper className="flex-grow py-16 text-zinc-900 overflow-hidden min-h-screen">
       {/* Background Decorative Tech Hexagons */}
       <div className="absolute left-[-10%] sm:left-[-12%] top-[10%] w-[320px] h-[320px] sm:w-[480px] sm:h-[480px] lg:w-[620px] lg:h-[620px] text-accent-yellow opacity-[0.12] pointer-events-none select-none z-0 animate-slow-spin">
         <svg viewBox="0 0 100 100" className="w-full h-full" fill="none">
@@ -77,7 +78,7 @@ export default function SobreNos() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-accent-yellow/10 text-accent-yellow-hover border border-accent-yellow/20 uppercase tracking-wider">
               Parceria Técnica e Fornecimento Industrial
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-950 tracking-tight leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-zinc-950 tracking-tight leading-tight">
               Parafusos e Fixadores de <br className="hidden sm:inline" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-yellow to-accent-yellow-hover font-extrabold">
                 Alta Qualidade
@@ -237,7 +238,7 @@ export default function SobreNos() {
 
         {/* Corporate Trust Figures */}
         <div className="border border-zinc-200 rounded-2xl bg-zinc-900 text-white p-8 sm:p-12 relative overflow-hidden shadow-xl">
-          <div className="absolute inset-0 grid-bg opacity-5 pointer-events-none" />
+          <div className="absolute inset-0 opacity-5 pointer-events-none" />
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center relative z-10">
             <div className="space-y-2">
@@ -260,6 +261,6 @@ export default function SobreNos() {
         </div>
 
       </div>
-    </div>
+    </HexBgWrapper>
   );
 }

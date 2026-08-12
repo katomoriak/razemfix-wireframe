@@ -124,9 +124,9 @@ export default function Home() {
     {
       title: "Fixadores Para Painéis Solares",
       items: [
-        "Parafusos Autobrocantes para Perfis de Alumínio",
-        "Clamps e Fixadores de Módulos Fotovoltaicos",
-        "Parafusos e Porcas em Aço Inox para Estruturas",
+        "Porcas Sextavadas Flangeadas Serrilhadas e Parafusos Francês",
+        "Parafusos Allen e Parafusos Martelo (T-Bolt)",
+        "Hastes Roscadas e Prisioneiros em Aço Inox para Estruturas",
       ],
       desc: "Elementos de fixação dedicados para sistemas fotovoltaicos, resistentes à corrosão e às intempéries para máxima durabilidade.",
       image: "/paineis solares.png",
@@ -134,13 +134,22 @@ export default function Home() {
     {
       title: "Acessórios e Fixadores",
       items: [
-        "Barras Roscadas (DIN 975 — Corte sob medida)",
         "Estojos e Prisioneiros Roscados",
         "Acessórios para Cabos de Aço (Clipes, sapatilhas, esticadores)",
         "Fixadores dedicados para estruturas de construção civil",
       ],
-      desc: "Barras estruturais, acessórios de movimentação de carga, suporte logístico e montagem civil pesada.",
+      desc: "Acessórios de movimentação de carga, suporte logístico e montagem civil pesada.",
       image: "/acessorios.png",
+    },
+    {
+      title: "Barras Roscadas",
+      items: [
+        "Barras Roscadas DIN 975 / DIN 976 (Aço Carbono e Inox)",
+        "Hastes Roscadas e Prisioneiros Roscados",
+        "Corte sob medida e acabamentos superficiais",
+      ],
+      desc: "Barras roscadas estruturais de alta resistência para ancoragem, suspensão e montagens industriais.",
+      image: "/barras roscadas.png",
     },
   ];
 
@@ -185,7 +194,7 @@ export default function Home() {
                 Especificação Normatizada & Qualidade Garantida
               </div>
               
-              <h1 className="text-3.5xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-zinc-950 leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-zinc-950 leading-tight">
                 Parafusos e Fixadores de <br className="hidden sm:inline" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-yellow to-accent-yellow-hover font-extrabold">
                   Alta Qualidade
@@ -249,13 +258,14 @@ export default function Home() {
               <div className="absolute w-[50%] h-[50%] rounded-full bg-yellow-500/10 blur-3xl opacity-70 pointer-events-none transition-all duration-1000 group-hover:bg-yellow-500/15 group-hover:scale-[1.6] group-hover:opacity-95"></div>
               
               <div className="w-full max-w-lg scale-110 sm:scale-115 lg:scale-[1.28] group-hover:scale-[1.34] transition-all duration-700 ease-out relative z-20 cursor-pointer">
-                <img
-                  src="/parafusos%20home.png"
+                <Image
+                  src="/parafusos home.png"
                   alt="Fixadores e Parafusos Industriais Razemfix"
+                  width={700}
+                  height={600}
+                  priority
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 70vw, 50vw"
                   className="w-full h-auto object-contain select-none drop-shadow-[0_12px_30px_rgba(234,179,8,0.12)] group-hover:drop-shadow-[0_30px_70px_rgba(234,179,8,0.25)] transition-all duration-700 animate-mechanical-float"
-                  onError={(e) => {
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1530124566582-a618bc2615ad?auto=format&fit=crop&w=800&q=80";
-                  }}
                 />
               </div>
             </div>
@@ -504,7 +514,7 @@ export default function Home() {
                     <img
                       src={cat.image}
                       alt={cat.title}
-                      className="max-h-full max-w-full object-contain select-none z-10 drop-shadow-[0_8px_16px_rgba(0,0,0,0.08)] group-hover:scale-105 transition-transform duration-500"
+                      className="max-h-full max-w-full object-contain select-none z-10 group-hover:scale-105 transition-transform duration-500"
                       onError={(e) => {
                         e.currentTarget.src = "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=400&q=85";
                       }}

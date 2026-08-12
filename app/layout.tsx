@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -10,6 +11,8 @@ const raleway = Raleway({
   variable: "--font-raleway",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -44,6 +47,7 @@ export default function RootLayout({
         <Footer />
         <FloatingWhatsApp />
         <RestrictedNavigationToast />
+        <SpeedInsights />
       </body>
     </html>
   );

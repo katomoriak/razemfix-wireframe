@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 
 import { Product, productsData as products } from "./products-data";
+import HexBgWrapper from "../components/HexBgWrapper";
 
 function ProductImage({ src, alt }: { src: string; alt: string }) {
   const [error, setError] = useState(false);
@@ -32,7 +33,7 @@ function ProductImage({ src, alt }: { src: string; alt: string }) {
     <img
       src={src}
       alt={alt}
-      className="w-full h-32 object-contain mx-auto drop-shadow-sm transition-transform duration-305 group-hover:scale-105"
+      className="w-full h-24 object-contain mx-auto transition-transform duration-300 group-hover:scale-105"
       onError={() => setError(true)}
     />
   );
@@ -113,7 +114,7 @@ function ProdutosContent() {
   };
 
   return (
-    <div className="flex-grow grid-bg py-12 relative min-h-screen bg-zinc-50">
+    <HexBgWrapper className="flex-grow py-12 min-h-screen">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -123,7 +124,7 @@ function ProdutosContent() {
             <Zap className="h-3.5 w-3.5 fill-accent-yellow text-accent-yellow" />
             Portfólio Técnico de Fixação Industrial
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight leading-tight">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight">
             Parafusos e Fixadores de Alta Qualidade
           </h1>
           <p className="text-sm text-zinc-600 max-w-2xl font-light">
@@ -247,35 +248,6 @@ function ProdutosContent() {
                 </div>
               </div>
 
-              {/* Material Selector */}
-              <div className="space-y-2.5">
-                <span className="text-[10px] font-bold text-zinc-500 tracking-wider uppercase block">Liga Metalúrgica</span>
-                <select
-                  value={selectedMaterial}
-                  onChange={(e) => setSelectedMaterial(e.target.value)}
-                  className="w-full bg-zinc-50 border border-zinc-200 focus:border-yellow-500 rounded-lg p-2.5 text-xs text-zinc-700 focus:outline-none"
-                >
-                  <option value="all">Todos os Materiais</option>
-                  <option value="carbono">Aço Carbono / Liga</option>
-                  <option value="inox">Aço Inox (304 / 316)</option>
-                  <option value="latão">Latão / Não-Ferrosos</option>
-                </select>
-              </div>
-
-              {/* Norm Selector */}
-              <div className="space-y-2.5">
-                <span className="text-[10px] font-bold text-zinc-500 tracking-wider uppercase block">Norma Regulamentadora</span>
-                <select
-                  value={selectedNorm}
-                  onChange={(e) => setSelectedNorm(e.target.value)}
-                  className="w-full bg-zinc-50 border border-zinc-200 focus:border-yellow-500 rounded-lg p-2.5 text-xs text-zinc-700 focus:outline-none"
-                >
-                  <option value="all">Todas as Normas</option>
-                  <option value="astm">Normas ASTM / ASME</option>
-                  <option value="din">Normas DIN / ISO (Métricas)</option>
-                </select>
-              </div>
-
             </div>
 
             {/* Quick Contact Info */}
@@ -304,23 +276,23 @@ function ProdutosContent() {
             </div>
 
             {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
                 {filteredProducts.map((product) => (
                   <div
                     key={product.id}
                     className="border border-zinc-200 rounded-xl bg-white hover:border-accent-yellow/35 transition-all duration-300 flex flex-col justify-between group overflow-hidden shadow-sm"
                   >
-                    {/* Top Focused Visual Box */}
-                    <div className="bg-zinc-50/70 p-6 border-b border-zinc-100 flex items-center justify-center relative min-h-[180px] group-hover:bg-zinc-50 transition-colors">
+                    {/* Top Focused Visual Box with pure white background */}
+                    <div className="bg-white p-4 border-b border-zinc-100 flex items-center justify-center relative min-h-[140px]">
                       <ProductImage src={product.image} alt={product.title} />
-                      <span className="absolute top-2 left-3 text-[8px] font-mono text-zinc-400 border border-zinc-200 bg-white px-1.5 py-0.5 rounded">
+                      <span className="absolute top-2 left-2.5 text-[8px] font-mono text-zinc-400 border border-zinc-200 bg-white px-1.5 py-0.5 rounded">
                         NORM: {product.norm.split(" / ")[0]}
                       </span>
                     </div>
 
                     {/* Content Area */}
-                    <div className="p-5 flex-grow flex flex-col justify-between space-y-4">
-                      <div className="space-y-2">
+                    <div className="p-4 flex-grow flex flex-col justify-between space-y-3">
+                      <div className="space-y-1.5">
                         {/* Grade and specifications */}
                         <div className="flex items-center justify-between text-[9px] text-zinc-500 font-mono">
                           <span className="font-bold uppercase tracking-wider text-accent-yellow-hover">
@@ -332,7 +304,7 @@ function ProdutosContent() {
                         </div>
 
                         {/* Product Title */}
-                        <h3 className="text-sm font-black text-zinc-900 group-hover:text-accent-yellow-hover transition-colors leading-tight line-clamp-1">
+                        <h3 className="text-xs sm:text-sm font-black text-zinc-900 group-hover:text-accent-yellow-hover transition-colors leading-tight line-clamp-1">
                           {product.title}
                         </h3>
 
@@ -342,28 +314,15 @@ function ProdutosContent() {
                         </p>
                       </div>
 
-                      {/* Technical Specs Tags inside card */}
-                      <div className="space-y-3 pt-3 border-t border-zinc-100">
-                        <div className="grid grid-cols-2 gap-2 text-[10px]">
-                          <div>
-                            <span className="text-[8px] text-zinc-400 font-bold block uppercase tracking-wider">Liga</span>
-                            <span className="text-zinc-700 truncate block font-semibold">{product.material.split(" / ")[0]}</span>
-                          </div>
-                          <div>
-                            <span className="text-[8px] text-zinc-400 font-bold block uppercase tracking-wider">Bitolas</span>
-                            <span className="text-zinc-700 truncate block font-mono font-semibold">{product.sizes[0]} a {product.sizes[product.sizes.length - 1]}</span>
-                          </div>
-                        </div>
-                      </div>
                     </div>
 
                     {/* Action button */}
-                    <div className="p-5 pt-0 mt-auto space-y-2">
+                    <div className="p-4 pt-0 mt-auto space-y-2">
                       <a
                         href={getWhatsAppUrl(product.title)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="relative overflow-hidden group/btn z-0 w-full py-2.5 bg-zinc-900 text-white rounded-lg font-bold text-xs tracking-wider active:scale-95 transition-all duration-300 flex items-center justify-center gap-1.5 uppercase cursor-pointer border border-zinc-800/10 shadow-sm"
+                        className="relative overflow-hidden group/btn z-0 w-full py-2 bg-zinc-900 text-white rounded-lg font-bold text-xs tracking-wider active:scale-95 transition-all duration-300 flex items-center justify-center gap-1.5 uppercase cursor-pointer border border-zinc-800/10 shadow-sm"
                       >
                         {/* Expanding circle background */}
                         <span className="absolute inset-0 bg-emerald-600 rounded-full scale-0 group-hover/btn:scale-[2.5] transition-transform duration-500 ease-out -z-10 origin-center" />
@@ -392,7 +351,7 @@ function ProdutosContent() {
                       
                       <button
                         onClick={() => setSelectedProduct(product)}
-                        className="w-full py-1.5 text-zinc-500 hover:text-zinc-800 text-[10px] font-bold tracking-wider transition-all duration-250 flex items-center justify-center gap-1 uppercase cursor-pointer"
+                        className="w-full py-1 text-zinc-500 hover:text-zinc-800 text-[10px] font-bold tracking-wider transition-all duration-250 flex items-center justify-center gap-1 uppercase cursor-pointer"
                       >
                         <Info className="h-3.5 w-3.5" />
                         Ficha Técnica
@@ -407,7 +366,7 @@ function ProdutosContent() {
                 <Search className="h-12 w-12 text-zinc-300 mx-auto mb-4 stroke-1" />
                 <h3 className="font-bold text-zinc-900 text-base">Nenhum fixador encontrado</h3>
                 <p className="text-xs text-zinc-500 mt-2 max-w-sm mx-auto leading-relaxed">
-                  Tente alterar seus termos de pesquisa ou remover alguns dos filtros de norma ou liga metálica.
+                  Tente alterar seus termos de pesquisa ou selecionar outra categoria.
                 </p>
                 <button
                   onClick={() => {
@@ -455,7 +414,7 @@ function ProdutosContent() {
             <div className="p-6 sm:p-8 space-y-6">
               
               {/* Product Image Display in Modal */}
-              <div className="bg-zinc-50 border border-zinc-200 rounded-xl p-4 flex items-center justify-center">
+              <div className="bg-white border border-zinc-200 rounded-xl p-4 flex items-center justify-center">
                 <div className="w-48">
                   <ProductImage src={selectedProduct.image} alt={selectedProduct.title} />
                 </div>
@@ -559,7 +518,7 @@ function ProdutosContent() {
         </div>
       )}
 
-    </div>
+    </HexBgWrapper>
   );
 }
 

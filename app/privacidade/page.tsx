@@ -1,10 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import { Shield, ArrowLeft } from "lucide-react";
+import HexBgWrapper from "../components/HexBgWrapper";
 
 export default function Privacidade() {
   return (
-    <div className="flex-grow grid-bg py-16 relative bg-zinc-50 text-zinc-900">
+    <HexBgWrapper className="flex-grow py-16 text-zinc-900 min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 relative z-10">
         
         {/* Back Link */}
@@ -56,6 +57,6 @@ export default function Privacidade() {
         </div>
 
       </div>
-    </div>
+    </HexBgWrapper>
   );
 }

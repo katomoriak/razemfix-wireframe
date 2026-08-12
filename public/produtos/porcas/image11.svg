@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="metalFace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <rect width="300" height="240" rx="12" fill="url(#bgGrad)"/>
+
+  <!-- Square Nut 3D -->
+  <g filter="url(#shadow)" transform="translate(150, 120)">
+    <!-- Front Left Face -->
+    <polygon points="-60,10 0,40 0,-10 -60,-40" fill="url(#metalFace)"/>
+    <!-- Front Right Face -->
+    <polygon points="0,40 60,10 60,-40 0,-10" fill="#475569"/>
+    <!-- Top Face -->
+    <polygon points="0,-60 60,-40 0,-10 -60,-40" fill="#f1f5f9"/>
+
+    <!-- Central Thread Hole -->
+    <ellipse cx="0" cy="-35" rx="26" ry="13" fill="#0f172a"/>
+    <ellipse cx="0" cy="-35" rx="26" ry="13" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+  </g>
+
+  <rect x="15" y="15" width="80" height="20" rx="4" fill="#475569" opacity="0.9"/>
+  <text x="55" y="29" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#ffffff">DIN 557</text>
+</svg>

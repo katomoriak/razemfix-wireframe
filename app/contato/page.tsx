@@ -15,6 +15,7 @@ import {
   FileCheck,
 } from "lucide-react";
 import { ConsultingSVG } from "../components/TechnicalDrawings";
+import HexBgWrapper from "../components/HexBgWrapper";
 
 function ContatoContent() {
   const searchParams = useSearchParams();
@@ -67,7 +68,7 @@ function ContatoContent() {
   };
 
   return (
-    <div className="flex-grow grid-bg py-12 relative min-h-screen bg-zinc-50 text-zinc-900 overflow-hidden">
+    <HexBgWrapper className="flex-grow py-12 min-h-screen text-zinc-900 overflow-hidden">
       {/* Background Decorative Tech Hexagons */}
       <div className="absolute left-[-10%] sm:left-[-12%] top-[15%] w-[320px] h-[320px] sm:w-[480px] sm:h-[480px] lg:w-[620px] lg:h-[620px] text-accent-yellow opacity-[0.15] pointer-events-none select-none z-0 animate-slow-spin">
         <svg viewBox="0 0 100 100" className="w-full h-full" fill="none">
@@ -96,7 +97,7 @@ function ContatoContent() {
           <span className="text-xs font-bold text-accent-yellow-hover uppercase tracking-wider block">
             Canais de Atendimento comercial
           </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-zinc-950 tracking-tight leading-tight">
             Cotação de Parafusos e Fixadores de Alta Qualidade
           </h1>
           <p className="text-sm text-zinc-655 max-w-2xl font-light">
@@ -502,7 +503,7 @@ function ContatoContent() {
               <div className="flex gap-3 items-start text-sm text-zinc-650 font-light">
                 <MapPin className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold text-zinc-900 block">Razemfix Indústria Metalúrgica</span>
+                  <span className="font-bold text-zinc-900 block">RAZEMFIX FIXADORES LTDA</span>
                   <span>Rua Cavalheiro Ernesto Giuliano, 236</span>
                   <span className="block">Olímpico • São Caetano do Sul - SP</span>
                   <span className="block text-xs font-semibold mt-1">CEP 09570-400</span>
@@ -529,7 +530,7 @@ function ContatoContent() {
 
         </div>
       </div>
-    </div>
+    </HexBgWrapper>
   );
 }
 

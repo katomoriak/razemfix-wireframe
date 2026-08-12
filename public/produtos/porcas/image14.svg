@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="metalFace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <rect width="300" height="240" rx="12" fill="url(#bgGrad)"/>
+
+  <!-- Slotted Nut (Castle Nut without Raised Crown) -->
+  <g filter="url(#shadow)" transform="translate(150, 120)">
+    <polygon points="-55,10 0,45 0,-25 -55,-60" fill="url(#metalFace)"/>
+    <polygon points="0,45 55,10 55,-60 0,-25" fill="#475569"/>
+    <polygon points="0,-75 55,-60 0,-25 -55,-60" fill="#f1f5f9"/>
+
+    <!-- Slots cut into top hex face -->
+    <rect x="-6" y="-72" width="12" height="40" fill="#0f172a" opacity="0.8"/>
+    <polygon points="-40,-62 -30,-58 -30,-25 -40,-29" fill="#0f172a" opacity="0.8"/>
+    <polygon points="30,-58 40,-62 40,-29 30,-25" fill="#0f172a" opacity="0.8"/>
+
+    <ellipse cx="0" cy="-45" rx="22" ry="11" fill="#0f172a"/>
+  </g>
+
+  <rect x="15" y="15" width="80" height="20" rx="4" fill="#475569" opacity="0.9"/>
+  <text x="55" y="29" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#ffffff">DIN 937</text>
+</svg>
