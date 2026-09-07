@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, FileText, PhoneCall } from "lucide-react";
+import { Menu, X, FileText, PhoneCall, FileSpreadsheet } from "lucide-react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +27,8 @@ export default function Header() {
   const getPageFriendlyName = (path: string) => {
     if (path === "/") return "Home";
     if (path.startsWith("/produtos")) return "Produtos";
+    if (path.startsWith("/catalogo-online")) return "Catálogo Online PDF";
+    if (path.startsWith("/especificacoes-fixadores")) return "Tabelas de Pesos de Fixadores";
     if (path.startsWith("/sobre-nos")) return "Sobre Nós";
     if (path.startsWith("/contato")) return "Contato";
     if (path.startsWith("/privacidade")) return "Política de Privacidade";
@@ -146,6 +148,23 @@ export default function Header() {
                               <span>{cat}</span>
                             </Link>
                           ))}
+
+                          <div className="border-t border-zinc-100 mt-1 pt-1 space-y-0.5">
+                            <Link
+                              href="/catalogo-online"
+                              className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-yellow-750 hover:text-yellow-900 hover:bg-accent-yellow/10 transition-colors"
+                            >
+                              <FileText className="h-3.5 w-3.5 text-accent-yellow-hover shrink-0" />
+                              <span>Catálogo Técnico PDF Online</span>
+                            </Link>
+                            <Link
+                              href="/especificacoes-fixadores-tabelas"
+                              className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-zinc-800 hover:text-zinc-950 hover:bg-zinc-100/80 transition-colors"
+                            >
+                              <FileSpreadsheet className="h-3.5 w-3.5 text-accent-yellow-hover shrink-0" />
+                              <span>Tabelas de Pesos (PDF)</span>
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -281,6 +300,25 @@ export default function Header() {
                           <span>{cat}</span>
                         </Link>
                       ))}
+
+                      <div className="border-t border-zinc-200 mt-2 pt-2 space-y-1">
+                        <Link
+                          href="/catalogo-online"
+                          onClick={() => setIsOpen(false)}
+                          className="flex items-center gap-2 py-2 text-xs font-bold text-yellow-750 hover:text-yellow-900"
+                        >
+                          <FileText className="h-3.5 w-3.5 text-accent-yellow-hover shrink-0" />
+                          <span>Catálogo Técnico PDF Online</span>
+                        </Link>
+                        <Link
+                          href="/especificacoes-fixadores-tabelas"
+                          onClick={() => setIsOpen(false)}
+                          className="flex items-center gap-2 py-2 text-xs font-bold text-zinc-800 hover:text-zinc-950"
+                        >
+                          <FileSpreadsheet className="h-3.5 w-3.5 text-accent-yellow-hover shrink-0" />
+                          <span>Tabelas de Pesos (PDF)</span>
+                        </Link>
+                      </div>
                     </div>
                   )}
                 </div>

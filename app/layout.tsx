@@ -16,6 +16,7 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://razemfix.com.br"),
   title: "Razemfix | Parafusos e Fixadores de Alta Qualidade",
   description: "A Razemfix é fabricante de parafusos e fixadores industriais de alto desempenho. Fornecemos parafusos de aço, parafusos inox, parafusos sextavados e fixadores de alta resistência com certificação ISO 9001.",
   keywords: "parafusos, parafusos inox, parafusos de aço, parafusos sextavados, fixadores industriais, fixadores de alta resistencia, fabricante de parafusos, parafuso sob medida, parafuso personalizado, fixadores personalizados, razemfix, parafusos e fixadores de alta qualidade",

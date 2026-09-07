@@ -18,6 +18,8 @@ import {
   Activity,
   Wrench,
 } from "lucide-react";
+import PdfCatalogSection from "./components/PdfCatalogSection";
+import TabelasFixadoresSection from "./components/TabelasFixadoresSection";
 
 export default function Home() {
   const heroRef = React.useRef<HTMLElement>(null);
@@ -52,10 +54,10 @@ export default function Home() {
 
   const sectors = [
     { name: "Indústria Metal Mecânica", desc: "Suprimento estrutural e fixadores para equipamentos mecânicos." },
-    { name: "Bens de Capital (Máquinas/Equipamentos)", desc: "Parafusos Allen e porcas técnicas de alta precisão." },
+    { name: "Bens de Capital (Máquinas/Equipamentos)", desc: "Parafusos, porcas e arruelas de alta precisão." },
     { name: "Estruturas Metálicas", desc: "Parafusos estruturais e arruelas calibradas para sustentação." },
     { name: "Energia Solar / Fotovoltaica", desc: "Parafusos autobrocantes e fixadores para perfis de alumínio." },
-    { name: "Setor Naval", desc: "Elementos de fixação resistentes à corrosão em aço inox 316." },
+    { name: "Setor Naval", desc: "Elementos de fixação resistentes à corrosão em aço inox." },
     { name: "Petroquímico", desc: "Prisioneiros e porcas resistentes à alta temperatura e pressão." },
     { name: "Infraestrutura / Construção Civil Pesada", desc: "Ancoragens químicas e chumbadores mecânicos de expansão." },
   ];
@@ -472,11 +474,14 @@ export default function Home() {
               href="/contato"
               className="mt-3 md:mt-0 px-5 py-2.5 bg-accent-yellow hover:bg-accent-yellow-hover text-zinc-950 rounded-lg text-xs font-bold tracking-wider transition-colors uppercase"
             >
-              Consultar Engenharia
+              Consultar Especialista
             </Link>
           </div>
         </div>
       </section>
+
+      {/* TABELAS DE PESOS DE FIXADORES */}
+      <TabelasFixadoresSection />
 
       {/* 5. CATÁLOGO DE PRODUTOS & MATERIAIS */}
       <section className="py-20 bg-white border-b border-zinc-200">
@@ -619,6 +624,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 5.5 ACESSE NOSSO CATÁLOGO EM PDF */}
+      <PdfCatalogSection />
+
       {/* 6. CONTATO DIRETO */}
       <section className="py-20 bg-zinc-50 border-t border-zinc-200 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -695,7 +703,7 @@ export default function Home() {
                 </div>
 
                 <div className="text-[10px] text-zinc-500 leading-normal font-mono relative z-10 pt-2 border-t border-zinc-200">
-                  MATRIZ INDUSTRIAL: SÃO CAETANO DO SUL - SP <br />
+                  MATRIZ: SÃO CAETANO DO SUL - SP <br />
                   TELEFONE: (11) 4318-2878
                 </div>
 

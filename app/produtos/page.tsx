@@ -5,17 +5,14 @@ import { useSearchParams, useRouter } from "next/navigation";
 import {
   Search,
   SlidersHorizontal,
-  FileText,
-  Info,
-  CheckCircle2,
   Zap,
-  X,
-  Hammer,
   Settings,
 } from "lucide-react";
 
-import { Product, productsData as products } from "./products-data";
+import { productsData as products } from "./products-data";
 import HexBgWrapper from "../components/HexBgWrapper";
+import PdfCatalogSection from "../components/PdfCatalogSection";
+import TabelasFixadoresSection from "../components/TabelasFixadoresSection";
 
 function ProductImage({ src, alt }: { src: string; alt: string }) {
   const [error, setError] = useState(false);
@@ -49,7 +46,6 @@ function ProdutosContent() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedMaterial, setSelectedMaterial] = useState<string>("all");
   const [selectedNorm, setSelectedNorm] = useState<string>("all");
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   // Sync category from URL query parameter
   useEffect(() => {
@@ -173,6 +169,9 @@ function ProdutosContent() {
           </a>
         </div>
 
+        {/* ACESSE NOSSO CATÁLOGO EM PDF */}
+        <PdfCatalogSection variant="card" className="mb-12" />
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* LEFT SIDEBAR: FILTERS */}
@@ -293,13 +292,10 @@ function ProdutosContent() {
                     {/* Content Area */}
                     <div className="p-4 flex-grow flex flex-col justify-between space-y-3">
                       <div className="space-y-1.5">
-                        {/* Grade and specifications */}
-                        <div className="flex items-center justify-between text-[9px] text-zinc-500 font-mono">
+                        {/* Category */}
+                        <div className="text-[9px] text-zinc-500 font-mono">
                           <span className="font-bold uppercase tracking-wider text-accent-yellow-hover">
                             {categories[product.category]}
-                          </span>
-                          <span className="bg-zinc-100 px-1.5 py-0.5 rounded font-bold text-zinc-655">
-                            {product.grade}
                           </span>
                         </div>
 
@@ -317,7 +313,7 @@ function ProdutosContent() {
                     </div>
 
                     {/* Action button */}
-                    <div className="p-4 pt-0 mt-auto space-y-2">
+                    <div className="p-4 pt-0 mt-auto">
                       <a
                         href={getWhatsAppUrl(product.title)}
                         target="_blank"
@@ -348,14 +344,6 @@ function ProdutosContent() {
                           <polyline points="7 7 17 7 17 17"></polyline>
                         </svg>
                       </a>
-                      
-                      <button
-                        onClick={() => setSelectedProduct(product)}
-                        className="w-full py-1 text-zinc-500 hover:text-zinc-800 text-[10px] font-bold tracking-wider transition-all duration-250 flex items-center justify-center gap-1 uppercase cursor-pointer"
-                      >
-                        <Info className="h-3.5 w-3.5" />
-                        Ficha Técnica
-                      </button>
                     </div>
 
                   </div>
@@ -385,138 +373,11 @@ function ProdutosContent() {
           </div>
 
         </div>
+
+        {/* TABELAS DE PESOS DE FIXADORES */}
+        <TabelasFixadoresSection variant="card" className="mt-16" />
+
       </div>
-
-      {/* PRODUCT DETAIL MODAL */}
-      {selectedProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-900/40 backdrop-blur-sm">
-          <div className="border border-zinc-200 rounded-2xl bg-white max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
-            
-            {/* Modal Header */}
-            <div className="p-6 border-b border-zinc-100 flex items-start justify-between bg-zinc-50">
-              <div className="space-y-1">
-                <span className="text-[10px] font-mono text-accent-yellow-hover uppercase font-bold">
-                  Especificação Técnica: {selectedProduct.norm}
-                </span>
-                <h3 className="text-lg sm:text-xl font-extrabold text-zinc-950">
-                  {selectedProduct.title}
-                </h3>
-              </div>
-              <button
-                onClick={() => setSelectedProduct(null)}
-                className="p-1 rounded-lg text-zinc-450 hover:text-zinc-800 hover:bg-zinc-100 transition-colors"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-
-            {/* Modal Body */}
-            <div className="p-6 sm:p-8 space-y-6">
-              
-              {/* Product Image Display in Modal */}
-              <div className="bg-white border border-zinc-200 rounded-xl p-4 flex items-center justify-center">
-                <div className="w-48">
-                  <ProductImage src={selectedProduct.image} alt={selectedProduct.title} />
-                </div>
-              </div>
-
-              {/* Technical properties */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="bg-zinc-50 p-3 rounded-lg border border-zinc-200">
-                  <span className="text-[9px] text-zinc-450 font-bold block uppercase tracking-wider">Normas Técnicas</span>
-                  <span className="text-xs text-zinc-800 font-bold">{selectedProduct.norm}</span>
-                </div>
-                <div className="bg-zinc-50 p-3 rounded-lg border border-zinc-200">
-                  <span className="text-[9px] text-zinc-450 font-bold block uppercase tracking-wider">Classe/Grau de Resistência</span>
-                  <span className="text-xs text-zinc-800 font-bold">{selectedProduct.grade}</span>
-                </div>
-                <div className="bg-zinc-50 p-3 rounded-lg border border-zinc-200">
-                  <span className="text-[9px] text-zinc-450 font-bold block uppercase tracking-wider">Material / Dureza</span>
-                  <span className="text-xs text-zinc-800 font-bold">{selectedProduct.material}</span>
-                </div>
-                <div className="bg-zinc-50 p-3 rounded-lg border border-zinc-200">
-                  <span className="text-[9px] text-zinc-450 font-bold block uppercase tracking-wider">Categoria Geral</span>
-                  <span className="text-xs text-zinc-800 font-bold">{categories[selectedProduct.category]}</span>
-                </div>
-              </div>
-
-              {/* Description */}
-              <div className="space-y-2">
-                <h4 className="text-xs font-bold text-zinc-950 uppercase tracking-wider">Especificação do Produto:</h4>
-                <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-light">
-                  {selectedProduct.description}
-                </p>
-              </div>
-
-              {/* Application details */}
-              <div className="space-y-2 bg-accent-yellow/5 p-4 rounded-xl border border-accent-yellow/15">
-                <h4 className="text-xs font-bold text-accent-yellow-hover uppercase tracking-wider flex items-center gap-1.5">
-                  <Hammer className="h-4 w-4" /> Recomendação Operacional:
-                </h4>
-                <p className="text-xs text-zinc-650 leading-relaxed font-light font-semibold">
-                  {selectedProduct.application}
-                </p>
-              </div>
-
-              {/* Size details */}
-              <div className="space-y-2">
-                <h4 className="text-xs font-bold text-zinc-950 uppercase tracking-wider">Medidas Disponíveis em Estoque Regulador:</h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedProduct.sizes.map((size) => (
-                    <span
-                      key={size}
-                      className="text-xs font-mono text-zinc-700 bg-zinc-50 border border-zinc-200 px-2.5 py-1 rounded font-bold"
-                    >
-                      {size}
-                    </span>
-                  ))}
-                </div>
-                <span className="text-[9px] text-zinc-400 leading-relaxed block font-mono">
-                  * Fabricamos outras bitolas e comprimentos sob desenho pela nossa equipe comercial.
-                </span>
-              </div>
-
-            </div>
-
-            {/* Modal Footer */}
-            <div className="p-6 border-t border-zinc-150 bg-zinc-50 flex items-center justify-between">
-              <span className="text-xs text-zinc-500 font-medium">Fornecimento em lotes e embalagem industrial.</span>
-              <a
-                href={getWhatsAppUrl(selectedProduct.title)}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setSelectedProduct(null)}
-                className="relative overflow-hidden group/btn z-0 px-6 py-3 bg-zinc-900 text-white rounded-lg font-bold text-sm tracking-wider active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer"
-              >
-                {/* Expanding circle background */}
-                <span className="absolute inset-0 bg-emerald-600 rounded-full scale-0 group-hover/btn:scale-[2.5] transition-transform duration-500 ease-out -z-10 origin-center" />
-                
-                {/* WhatsApp Icon SVG */}
-                <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4 text-accent-yellow shrink-0 group-hover/btn:text-white transition-colors duration-300">
-                  <path d="M12.012 2c-5.506 0-9.988 4.482-9.988 9.988 0 1.76.457 3.414 1.258 4.86L2 22l5.312-1.394c1.408.767 3.013 1.206 4.698 1.206 5.506 0 9.988-4.482 9.988-9.988s-4.482-9.988-9.988-9.988zm4.78 13.06c-.2.56-1.16 1.08-1.6 1.12-.4.04-.92.22-2.74-.5-2.32-.92-3.8-3.28-3.92-3.44-.12-.16-1.04-1.38-1.04-2.63 0-1.25.64-1.86.88-2.12.2-.22.44-.28.58-.28.14 0 .28 0 .4.02.12.02.28-.04.44.34.16.38.56 1.36.6 1.48.04.1.06.22 0 .34-.06.12-.1.2-.2.32-.1.1-.2.24-.3.34-.1.12-.22.24-.1.44.12.2.54.88 1.14 1.42.78.7 1.44.92 1.64 1.02.2.1.32.08.44-.06.12-.14.52-.6.66-.8.14-.2.28-.16.48-.08.2.08 1.26.6 1.48.7.22.1.36.16.42.26.06.1.06.56-.14 1.12z" />
-                </svg>
-                
-                <span>Cote pelo Whatsapp</span>
-
-                {/* Sliding External Arrow Icon */}
-                <svg 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2.5" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  className="h-3.5 w-0 opacity-0 group-hover/btn:w-3.5 group-hover/btn:opacity-100 transition-all duration-300 transform translate-x-2 group-hover/btn:translate-x-0 shrink-0 text-white"
-                >
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
-              </a>
-            </div>
-
-          </div>
-        </div>
-      )}
 
     </HexBgWrapper>
   );

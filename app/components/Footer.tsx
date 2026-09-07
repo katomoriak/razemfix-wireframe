@@ -44,6 +44,8 @@ export default function Footer() {
               {[
                 { name: "HOME", path: "/" },
                 { name: "PRODUTOS", path: "/produtos" },
+                { name: "CATÁLOGO TÉCNICO (PDF)", path: "/catalogo-online" },
+                { name: "TABELAS DE PESOS (PDF)", path: "/especificacoes-fixadores-tabelas" },
                 { name: "SOBRE NÓS", path: "/sobre-nos" },
                 { name: "CONTATO", path: "/contato" },
                 { name: "POLÍTICA DE PRIVACIDADE", path: "/privacidade" },
@@ -122,7 +124,7 @@ export default function Footer() {
               <li className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 text-zinc-900 mt-0.5 flex-shrink-0" />
                 <div>
-                  <span className="block text-xs text-zinc-600 font-extrabold">Matriz Industrial</span>
+                  <span className="block text-xs text-zinc-600 font-extrabold">Matriz</span>
                   <span className="block font-bold text-zinc-900">
                     Rua Cavalheiro Ernesto Giuliano, 236
                   </span>
@@ -169,7 +171,8 @@ export default function Footer() {
           <div className="flex gap-4 mt-4 md:mt-0">
             <Link href="/privacidade" className="hover:text-zinc-950 transition-colors font-bold">Termos de Uso</Link>
             <Link href="/privacidade" className="hover:text-zinc-950 transition-colors font-bold">Políticas de Privacidade</Link>
-            <Link href="/produtos" className="hover:text-zinc-950 transition-colors font-extrabold text-zinc-900">Catálogo Técnico</Link>
+            <Link href="/produtos" className="hover:text-zinc-950 transition-colors font-bold">Grade de Produtos</Link>
+            <Link href="/catalogo-online" className="hover:text-zinc-950 transition-colors font-extrabold text-zinc-900">Catálogo PDF Online</Link>
           </div>
         </div>
       </div>

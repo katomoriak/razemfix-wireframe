@@ -334,7 +334,7 @@ function ContatoContent() {
                   <span className="text-xs font-mono text-accent-yellow-hover font-bold uppercase tracking-wider block">PROPOSTA EM PROCESSAMENTO</span>
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight">Cotação Recebida!</h2>
                   <p className="text-sm text-zinc-600 font-light max-w-lg mx-auto leading-relaxed">
-                    Agradecemos o envio de sua solicitação de orçamento. Nossa equipe de engenharia comercial já foi notificada para analisar as especificações e elaborar a proposta técnica.
+                    Agradecemos o envio de sua solicitação de orçamento. Nossa equipe comercial já foi notificada para analisar as especificações e elaborar a proposta técnica.
                   </p>
                 </div>
 
@@ -497,7 +497,7 @@ function ContatoContent() {
 
               <div className="relative z-10 space-y-4">
                 <h3 className="text-sm font-bold tracking-widest text-zinc-950 uppercase border-l-2 border-accent-yellow pl-3">
-                  Matriz Industrial
+                  Matriz
                 </h3>
               
               <div className="flex gap-3 items-start text-sm text-zinc-650 font-light">
@@ -513,7 +513,7 @@ function ContatoContent() {
               {/* Google Maps Iframe Embed */}
               <div className="w-full h-48 rounded-xl overflow-hidden border border-zinc-200 shadow-inner mt-4 relative">
                 <iframe
-                  title="Localização da Matriz Industrial Razemfix"
+                  title="Localização da Matriz Razemfix"
                   src="https://maps.google.com/maps?q=Rua%20Cavalheiro%20Ernesto%20Giuliano,%20236,%20Ol%C3%ADmpico,%20S%C3%A3o%20Caetano%20do%20Sul%20-%20SP&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"

@@ -721,7 +721,7 @@ export const productsData: Product[] = [
     application: "Uso em conjunto com parafusos Allen cabeça cilíndrica onde o espaço de alojamento é limitado.",
     description: "Possui diâmetro externo reduzido para se alojar perfeitamente em rebaixos estreitos de máquinas.",
     sizes: ["M3", "M4", "M5", "M6", "M8", "M10", "M12", "M16"],
-    image: "/produtos/arruela/image5.jpeg",
+    image: "/produtos/arruela/image1.jpeg",
   },
   {
     id: "arruela-6",
@@ -733,7 +733,7 @@ export const productsData: Product[] = [
     application: "Equipamentos com vibração constante, motores, bombas e juntas automotivas.",
     description: "Arruela helicoidal que cria tensão mecânica constante para travar o parafuso contra folgas.",
     sizes: ["M3", "M4", "M5", "M6", "M8", "M10", "M12", "M16", "M20", "3/16\"", "1/4\"", "5/16\"", "3/8\"", "1/2\"", "5/8\"", "3/4\""],
-    image: "/produtos/arruela/image6.jpeg",
+    image: "/produtos/arruela/image5.jpeg",
   },
   {
     id: "arruela-7",
@@ -745,7 +745,7 @@ export const productsData: Product[] = [
     application: "Conexões pesadas ferroviárias e montagem de torres de transmissão.",
     description: "Estrutura helicoidal dupla que fornece força de mola superior e maior amplitude de travamento.",
     sizes: ["M12", "M16", "M20", "M24", "1/2\"", "5/8\"", "3/4\""],
-    image: "/produtos/arruela/image7.jpeg",
+    image: "/produtos/arruela/image6.jpeg",
   },
   {
     id: "arruela-8",
@@ -757,7 +757,7 @@ export const productsData: Product[] = [
     application: "Instalação de prisioneiros e parafusos em rodas de caminhões e ônibus.",
     description: "Formato cônico elástico projetado para absorver choques mecânicos e manter o torque de aperto da roda.",
     sizes: ["M18", "M20", "M22", "7/8\""],
-    image: "/produtos/arruela/image8.jpeg",
+    image: "/produtos/arruela/image7.jpeg",
   },
   {
     id: "arruela-9",
@@ -769,7 +769,7 @@ export const productsData: Product[] = [
     application: "Fixação de telhas metálicas, galpões e estruturas externas expostas à chuva.",
     description: "Arruela metálica acoplada a um inserto de borracha vulcanizada (EPDM) para vedação absoluta contra infiltração.",
     sizes: ["#10 (4.8mm)", "#12 (5.5mm)", "#14 (6.3mm)", "5/16\""],
-    image: "/produtos/arruela/image9.jpeg",
+    image: "/produtos/arruela/image8.jpeg",
   },
   {
     id: "arruela-10",
@@ -781,7 +781,7 @@ export const productsData: Product[] = [
     application: "Bujões de cárter, conexões hidráulicas de alta pressão e compressores.",
     description: "Formato cônico que se deforma de maneira controlada sob aperto para preencher micro-frestas e vedar fluidos.",
     sizes: ["M10", "M12", "M14", "M16", "M20", "1/4\"", "3/8\"", "1/2\""],
-    image: "/produtos/arruela/image10.jpeg",
+    image: "/produtos/arruela/image9.jpeg",
   },
   {
     id: "arruela-11",
@@ -793,7 +793,7 @@ export const productsData: Product[] = [
     application: "Equipamentos eletroeletrônicos, conexões de painéis elétricos para evitar vibração e garantir contato elétrico.",
     description: "Dentes voltados para a parte interna que cravam na superfície e na cabeça do fixador.",
     sizes: ["M3", "M4", "M5", "M6", "M8", "M10", "M12"],
-    image: "/produtos/arruela/image11.jpeg",
+    image: "/produtos/arruela/image10.jpeg",
   },
   {
     id: "arruela-12",
@@ -805,7 +805,7 @@ export const productsData: Product[] = [
     application: "Juntas de estruturas elétricas de aterramento, montagens de eletrodomésticos e componentes de motores.",
     description: "Dentes externos em ângulo que travam mecanicamente sob aperto, impedindo giros indesejados.",
     sizes: ["M4", "M5", "M6", "M8", "M10", "M12"],
-    image: "/produtos/arruela/image12.jpeg",
+    image: "/produtos/arruela/image11.jpeg",
   },
   {
     id: "arruela-13",
@@ -817,7 +817,7 @@ export const productsData: Product[] = [
     application: "Ajuste de inclinação e nivelamento em vigas I e U de estruturas metálicas.",
     description: "Formato quadrado cuneiforme (com inclinação de 8% ou 14%) para compensar a inclinação de perfis laminados.",
     sizes: ["M12", "M16", "M20", "M24", "1/2\"", "5/8\"", "3/4\"", "7/8\""],
-    image: "/produtos/arruela/image13.jpeg",
+    image: "/produtos/arruela/image12.jpeg",
   },
   {
     id: "arruela-14",
@@ -829,7 +829,7 @@ export const productsData: Product[] = [
     application: "Isolamento elétrico de componentes, vedações leves de água e conexões de tubos de instrumentação.",
     description: "Anel isolante macio de nylon ou fibra para absorção e isolação galvânica.",
     sizes: ["M3", "M4", "M5", "M6", "M8", "M10"],
-    image: "/produtos/arruela/image14.jpeg",
+    image: "/produtos/arruela/image13.jpeg",
   },
   {
     id: "arruela-15",
@@ -841,7 +841,7 @@ export const productsData: Product[] = [
     application: "Flanges de tubulações sob ciclos térmicos de expansão, freios industriais e prensas.",
     description: "Arruela cônica que atua como mola de alta capacidade de carga em espaços axiais extremamente compactos.",
     sizes: ["M8", "M10", "M12", "M16", "M20", "M24", "M30"],
-    image: "/produtos/arruela/image1.jpeg",
+    image: "/produtos/arruela/image14.jpeg",
   },
   // Categoria 3: Chumbadores Mecânicos
   {

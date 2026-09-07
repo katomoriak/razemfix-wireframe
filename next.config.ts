@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
+  // Define a raiz do projeto explicitamente para o Turbopack (evita detecção incorreta de lockfile na pasta de usuário)
+  turbopack: {
+    root: path.resolve(__dirname),
+  },
+
   // Desativa o header x-powered-by para reduzir tamanho de cabeçalho e segurança
   poweredByHeader: false,
 
@@ -21,11 +27,6 @@ const nextConfig: NextConfig = {
   // Remoção de logs em produção para reduzir tamanho do bundle e tempo de execução JS
   compiler: {
     removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
-  },
-
-  // Otimização de pacotes para Tree Shaking automático e redução do bundle JS
-  experimental: {
-    optimizePackageImports: ["lucide-react"],
   },
 };
 
