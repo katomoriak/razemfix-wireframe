@@ -25,10 +25,14 @@ export const metadata: Metadata = {
     "Consulte online o Catálogo Técnico Razemfix de parafusos sextavados, allen, inox, porcas, arruelas e fixadores industriais. Especificações completas, bitolas e normas DIN, ISO, ASTM e ABNT.",
   keywords:
     "catálogo parafusos pdf, catálogo fixadores industriais, tabela parafusos sextavados, catálogo porcas e arruelas, especificações técnicas fixadores, normas din iso astm parafusos, parafusos inox 304 316, chumbadores mecânicos, barras roscadas, razemfix catálogo",
+  alternates: {
+    canonical: "https://www.razemfix.com.br/catalogo-online",
+  },
   openGraph: {
     title: "Catálogo Técnico de Parafusos, Porcas e Arruelas PDF Online | Razemfix",
     description:
       "Visualize online ou baixe o Catálogo Técnico Completo de Fixadores Industriais Razemfix.",
+    url: "https://www.razemfix.com.br/catalogo-online",
     images: [
       {
         url: "/capa_catalogo.png",
@@ -58,12 +62,12 @@ export default function CatalogoOnlinePage() {
         description:
           "Catálogo técnico e comercial completo com especificações de parafusos sextavados, allen, porcas, arruelas, chumbadores e barras roscadas segundo normas DIN, ISO, ASTM e ABNT.",
         encodingFormat: "application/pdf",
-        url: "https://razemfix.com.br/catalogo-parafusos-arruelas-porcas_razemfix.pdf",
+        url: "https://www.razemfix.com.br/catalogo-parafusos-arruelas-porcas_razemfix.pdf",
         publisher: {
           "@type": "Organization",
           name: "Razemfix Fixadores Industriais",
-          url: "https://razemfix.com.br",
-          logo: "https://razemfix.com.br/simbolo_favicon.png",
+          url: "https://www.razemfix.com.br",
+          logo: "https://www.razemfix.com.br/simbolo_favicon.png",
         },
         inLanguage: "pt-BR",
       },
@@ -74,19 +78,19 @@ export default function CatalogoOnlinePage() {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://razemfix.com.br",
+            item: "https://www.razemfix.com.br",
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Produtos",
-            item: "https://razemfix.com.br/produtos",
+            item: "https://www.razemfix.com.br/produtos",
           },
           {
             "@type": "ListItem",
             position: 3,
             name: "Catálogo Técnico Online",
-            item: "https://razemfix.com.br/catalogo-online",
+            item: "https://www.razemfix.com.br/catalogo-online",
           },
         ],
       },

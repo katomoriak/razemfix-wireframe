@@ -11,11 +11,14 @@ export const metadata: Metadata = {
     "Consulte e baixe as tabelas oficiais de peso de parafusos sextavados (DIN 933, DIN 931, ASTM A325, GR.2/5/8), porcas (DIN 934, ASTM A194 2H) e arruelas lisas (DIN 125, DIN 994, F436). Razemfix Fixadores Industriais.",
   keywords:
     "tabela de peso parafusos, tabela peso porcas, tabela arruelas lisas, peso parafuso sextavado din 933, peso parafuso din 931, peso porca din 934, especificações fixadores, tabela de peso astm a325, tabela astm a194 2h, arruela din 125 peso, razemfix tabelas",
+  alternates: {
+    canonical: "https://www.razemfix.com.br/especificacoes-fixadores-tabelas",
+  },
   openGraph: {
     title: "Tabelas de Peso e Especificações de Fixadores | Razemfix",
     description:
       "Tabelas técnicas de peso teórico de parafusos, porcas e arruelas em milímetros e polegadas. Download direto em PDF.",
-    url: "https://razemfix.com.br/especificacoes-fixadores-tabelas",
+    url: "https://www.razemfix.com.br/especificacoes-fixadores-tabelas",
     type: "website",
     images: [
       {
@@ -42,8 +45,8 @@ export default function EspecificacoesFixadoresTabelasPage() {
         publisher: {
           "@type": "Organization",
           name: "Razemfix Fixadores Industriais",
-          url: "https://razemfix.com.br",
-          logo: "https://razemfix.com.br/simbolo_favicon.png",
+          url: "https://www.razemfix.com.br",
+          logo: "https://www.razemfix.com.br/simbolo_favicon.png",
         },
         inLanguage: "pt-BR",
       },
@@ -54,13 +57,13 @@ export default function EspecificacoesFixadoresTabelasPage() {
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: "https://razemfix.com.br",
+            item: "https://www.razemfix.com.br",
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Tabelas",
-            item: "https://razemfix.com.br/especificacoes-fixadores-tabelas",
+            item: "https://www.razemfix.com.br/especificacoes-fixadores-tabelas",
           },
         ],
       },

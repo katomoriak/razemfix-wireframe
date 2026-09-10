@@ -208,7 +208,7 @@ export default function Home() {
               </p>
 
               <p className="text-base md:text-lg text-zinc-650 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
-                Como <strong className="font-semibold text-zinc-900">fabricante de parafusos</strong> e <strong className="font-semibold text-zinc-900">fixadores industriais</strong>, oferecemos soluções completas para o abastecimento de empresas e indústrias, fornecendo parafusos e fixadores variados de alta resistência, desenvolvidos sob medida e conforme normas internacionais.
+                Como <strong className="font-semibold text-zinc-900">fábrica e indústria fabricante de parafusos</strong>, porcas e <strong className="font-semibold text-zinc-900">fixadores industriais</strong>, oferecemos soluções completas para o abastecimento corporativo, fornecendo parafusos e porcas de alta resistência, elementos para fixação de parafusos pesados e projetos especiais sob medida.
               </p>
 
               {/* CTAs */}

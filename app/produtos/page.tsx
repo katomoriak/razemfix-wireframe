@@ -279,7 +279,7 @@ function ProdutosContent() {
                 {filteredProducts.map((product) => (
                   <div
                     key={product.id}
-                    className="border border-zinc-200 rounded-xl bg-white hover:border-accent-yellow/35 transition-all duration-300 flex flex-col justify-between group overflow-hidden shadow-sm"
+                    className="border border-zinc-200 rounded-xl bg-white hover:border-accent-yellow/50 transition-all duration-300 flex flex-col justify-between group overflow-hidden shadow-sm relative hover:z-20 hover:shadow-md"
                   >
                     {/* Top Focused Visual Box with pure white background */}
                     <div className="bg-white p-4 border-b border-zinc-100 flex items-center justify-center relative min-h-[140px]">
@@ -299,10 +299,35 @@ function ProdutosContent() {
                           </span>
                         </div>
 
-                        {/* Product Title */}
-                        <h3 className="text-xs sm:text-sm font-black text-zinc-900 group-hover:text-accent-yellow-hover transition-colors leading-tight line-clamp-1">
-                          {product.title}
-                        </h3>
+                        {/* Product Title with Full Name Tooltip on Hover */}
+                        <div className="relative group/title">
+                          <h3 
+                            title={product.title}
+                            className="text-xs sm:text-sm font-black text-zinc-900 group-hover:text-accent-yellow-hover transition-colors leading-tight line-clamp-1 cursor-default"
+                          >
+                            {product.title}
+                          </h3>
+
+                          {/* Floating Tooltip displaying Full Product Name on Hover */}
+                          <div 
+                            role="tooltip"
+                            className="pointer-events-none absolute bottom-full left-0 right-0 mb-2 opacity-0 group-hover:opacity-100 transition-all duration-200 translate-y-1 group-hover:translate-y-0 z-30 drop-shadow-xl"
+                          >
+                            <div className="bg-zinc-950/95 backdrop-blur-md text-white text-xs font-semibold px-3 py-2 rounded-lg border border-zinc-700/80 shadow-2xl leading-snug">
+                              <div className="flex items-center gap-1.5 mb-1">
+                                <span className="w-1.5 h-1.5 rounded-full bg-accent-yellow animate-pulse shrink-0" />
+                                <span className="text-[9px] font-mono uppercase tracking-wider text-accent-yellow font-bold truncate">
+                                  {categories[product.category]} {product.norm ? `• ${product.norm.split(" / ")[0]}` : ""}
+                                </span>
+                              </div>
+                              <p className="text-xs font-bold text-white leading-snug break-words">
+                                {product.title}
+                              </p>
+                              {/* Downward pointer caret */}
+                              <span className="absolute -bottom-1 left-4 w-2 h-2 bg-zinc-950 border-r border-b border-zinc-700/80 rotate-45" />
+                            </div>
+                          </div>
+                        </div>
 
                         {/* Short Description */}
                         <p className="text-[11px] text-zinc-500 leading-normal line-clamp-1 font-light">
