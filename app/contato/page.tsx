@@ -13,6 +13,7 @@ import {
   MapPin,
   X,
   FileCheck,
+  Loader2,
 } from "lucide-react";
 import { ConsultingSVG } from "../components/TechnicalDrawings";
 import HexBgWrapper from "../components/HexBgWrapper";
@@ -33,10 +34,11 @@ function ContatoContent() {
   const [materialList, setMaterialList] = useState("");
   const [timeline, setTimeline] = useState("imediato");
   const [observations, setObservations] = useState("");
-  const [attachedFile, setAttachedFile] = useState<{ name: string; size: string } | null>(null);
+  const [attachedFile, setAttachedFile] = useState<{ name: string; size: string; raw: File } | null>(null);
   
   // Submission state
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [quoteId, setQuoteId] = useState("");
 
   // Load prefilled product from URL parameter
@@ -46,25 +48,96 @@ function ContatoContent() {
     }
   }, [productParam]);
 
-  const mockFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
+      if (file.size > 15 * 1024 * 1024) {
+        alert("O arquivo selecionado excede o limite máximo de 15MB.");
+        return;
+      }
       setAttachedFile({
         name: file.name,
         size: (file.size / 1024).toFixed(1) + " KB",
+        raw: file,
       });
     }
+  };
+
+  const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const result = reader.result as string;
+        const base64 = result.split(",")[1] || "";
+        resolve(base64);
+      };
+      reader.onerror = (error) => reject(error);
+    });
   };
 
   const removeAttachedFile = () => {
     setAttachedFile(null);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const randomId = "RF-" + new Date().getFullYear() + "-" + Math.floor(1000 + Math.random() * 9000);
     setQuoteId(randomId);
-    setIsSubmitted(true);
+
+    const prazoDesc =
+      timeline === "imediato"
+        ? "Imediato / Urgente"
+        : timeline === "30-dias"
+        ? "Programado (30 Dias)"
+        : "Desenho / Amostra (Sob Medida)";
+
+    const materiaisDesc = attachedFile
+      ? `${materialList}\n\n[Arquivo Anexo: ${attachedFile.name} (${attachedFile.size})]`
+      : materialList;
+
+    let arquivoBase64 = "";
+    let arquivoNome = "";
+    let arquivoTipo = "";
+
+    if (attachedFile?.raw) {
+      try {
+        arquivoBase64 = await fileToBase64(attachedFile.raw);
+        arquivoNome = attachedFile.name;
+        arquivoTipo = attachedFile.raw.type || "application/octet-stream";
+      } catch (fileErr) {
+        console.error("Erro ao converter anexo para base64:", fileErr);
+      }
+    }
+
+    try {
+      await fetch("/api/cotacao", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          protocolo: randomId,
+          empresa: companyName,
+          cnpj: cnpj,
+          contato: contactName,
+          email: email,
+          telefone: phone,
+          prazo: prazoDesc,
+          materiais: materiaisDesc,
+          observacoes: observations,
+          arquivoNome,
+          arquivoTipo,
+          arquivoBase64,
+        }),
+      });
+    } catch (err) {
+      console.error("Erro ao enviar cotação para o Google Sheets:", err);
+    } finally {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+    }
   };
 
   return (
@@ -229,7 +302,7 @@ function ContatoContent() {
                         <div className="border-2 border-dashed border-zinc-200 hover:border-accent-yellow/50 rounded-xl p-6 bg-zinc-50 text-center transition-colors relative cursor-pointer">
                           <input
                             type="file"
-                            onChange={mockFileUpload}
+                            onChange={handleFileUpload}
                             className="absolute inset-0 opacity-0 cursor-pointer"
                             accept=".xlsx,.xls,.pdf,.csv,.dwg,.dxf,.png,.jpg"
                           />
@@ -315,9 +388,17 @@ function ContatoContent() {
                   <div className="pt-6 border-t border-zinc-100 mt-8">
                     <button
                       type="submit"
-                      className="w-full py-4 bg-accent-yellow hover:bg-accent-yellow-hover text-zinc-950 rounded-lg font-black text-sm tracking-wider shadow active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 border border-accent-yellow/25 uppercase"
+                      disabled={isSubmitting}
+                      className="w-full py-4 bg-accent-yellow hover:bg-accent-yellow-hover text-zinc-950 rounded-lg font-black text-sm tracking-wider shadow active:scale-95 transition-all duration-300 flex items-center justify-center gap-2 border border-accent-yellow/25 uppercase disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer"
                     >
-                      Enviar Solicitação de Cotação
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="h-5 w-5 animate-spin" />
+                          <span>{attachedFile ? "Fazendo upload do anexo e enviando..." : "Gravando e enviando cotação..."}</span>
+                        </>
+                      ) : (
+                        "Enviar Solicitação de Cotação"
+                      )}
                     </button>
                   </div>
 
