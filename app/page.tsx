@@ -208,7 +208,7 @@ export default function Home() {
               </p>
 
               <p className="text-base md:text-lg text-zinc-650 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
-                Como <strong className="font-semibold text-zinc-900">fábrica e indústria fabricante de parafusos</strong>, porcas e <strong className="font-semibold text-zinc-900">fixadores industriais</strong>, oferecemos soluções completas para o abastecimento corporativo, fornecendo parafusos e porcas de alta resistência, elementos para fixação de parafusos pesados e projetos especiais sob medida.
+                Como <strong className="font-semibold text-zinc-900">distribuidora de parafusos</strong>, porcas e <strong className="font-semibold text-zinc-900">fixadores industriais</strong>, oferecemos soluções completas para o abastecimento corporativo, fornecendo parafusos e porcas de alta resistência, elementos para fixação de parafusos pesados e projetos especiais sob medida.
               </p>
 
               {/* CTAs */}
@@ -326,7 +326,7 @@ export default function Home() {
               <div className="w-16 h-1.5 bg-accent-yellow rounded-full" />
 
               <p className="text-zinc-650 leading-relaxed text-sm sm:text-base font-light">
-                A Razemfix é referência como <strong className="font-semibold text-zinc-900">fabricante de parafusos</strong> e distribuidora de elementos de fixação de alta performance. Atuamos com foco no fornecimento de <strong className="font-semibold text-zinc-900">parafusos e fixadores de alta qualidade para empresas e indústrias</strong>, combinando suporte técnico a um amplo estoque regulador.
+                A Razemfix é referência como <strong className="font-semibold text-zinc-900">distribuidora de parafusos</strong> e elementos de fixação de alta performance. Atuamos com foco no fornecimento de <strong className="font-semibold text-zinc-900">parafusos e fixadores de alta qualidade para empresas e indústrias</strong>, combinando suporte técnico a um amplo estoque regulador.
               </p>
               
               <p className="text-zinc-650 leading-relaxed text-sm sm:text-base font-light">

@@ -18,22 +18,19 @@ const raleway = Raleway({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.razemfix.com.br"),
   title: {
-    default: "Razemfix | Fábrica e Fabricante de Parafusos e Fixadores Industriais",
+    default: "Razemfix | Distribuidora de Parafusos e Fixadores Industriais",
     template: "%s | Razemfix Fixadores Industriais",
   },
   description:
-    "A Razemfix é fábrica e indústria fabricante de parafusos, porcas, arruelas e fixadores industriais de alto desempenho. Fornecemos soluções sob medida, fixação pesada e normas DIN, ISO e ASTM para todo o Brasil.",
+    "A Razemfix é distribuidora de parafusos, porcas, arruelas e fixadores industriais de alto desempenho. Fornecemos soluções sob medida, fixação pesada e normas DIN, ISO e ASTM para todo o Brasil.",
   keywords: [
     "razemfix",
-    "fabrica de parafusos",
+    "distribuidora de parafusos",
+    "distribuidores de parafusos",
+    "distribuidor de parafusos",
     "fixadores",
-    "industria de parafusos",
-    "fabricante de parafusos",
     "parafusos e porcas",
-    "fabricantes de parafusos",
-    "industrias de parafusos",
     "fixação parafusos",
-    "fabricante parafusos",
     "fixadores industriais",
     "parafusos de aço",
     "parafusos inox",
@@ -57,9 +54,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Razemfix | Fábrica e Fabricante de Parafusos e Fixadores Industriais",
+    title: "Razemfix | Distribuidora de Parafusos e Fixadores Industriais",
     description:
-      "Fábrica e indústria de fixadores industriais: parafusos, porcas, arruelas e fixação sob medida com certificação e alta resistência mecânica.",
+      "Distribuidora de fixadores industriais: parafusos, porcas, arruelas e fixação sob medida com certificação e alta resistência mecânica.",
     url: "https://www.razemfix.com.br",
     siteName: "Razemfix Parafusos e Fixadores Industriais",
     locale: "pt_BR",
@@ -75,9 +72,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Razemfix | Fábrica e Fabricante de Parafusos e Fixadores Industriais",
+    title: "Razemfix | Distribuidora de Parafusos e Fixadores Industriais",
     description:
-      "Fábrica e indústria de fixadores industriais: parafusos, porcas, arruelas e fixação sob medida com padrão de qualidade e pronta-entrega.",
+      "Distribuidora de fixadores industriais: parafusos, porcas, arruelas e fixação sob medida com padrão de qualidade e pronta-entrega.",
     images: ["/razemfix_logotipocompleto.png"],
   },
   icons: {
@@ -97,10 +94,10 @@ const organizationSchema = {
       "@type": "Organization",
       "@id": "https://www.razemfix.com.br/#organization",
       name: "Razemfix Fixadores Industriais",
-      alternateName: ["Razemfix", "Razemfix Parafusos", "Fábrica de Parafusos Razemfix", "Indústria de Parafusos Razemfix"],
+      alternateName: ["Razemfix", "Razemfix Parafusos", "Distribuidora de Parafusos Razemfix"],
       url: "https://www.razemfix.com.br",
       logo: "https://www.razemfix.com.br/simbolo_favicon.png",
-      description: "Fábrica e indústria fabricante de parafusos, porcas, arruelas e fixadores industriais de alta resistência.",
+      description: "Distribuidora de parafusos, porcas, arruelas e fixadores industriais de alta resistência.",
       telephone: "+55-11-93073-6051",
       contactPoint: {
         "@type": "ContactPoint",

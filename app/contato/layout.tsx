@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contato e Cotação de Parafusos e Fixadores Industriais",
   description:
-    "Solicite uma cotação rápida com os especialistas da Razemfix. Fornecimento direto da fábrica de parafusos, porcas, arruelas e fixadores sob medida com agilidade para todo o Brasil.",
+    "Solicite uma cotação rápida com os especialistas da Razemfix. Distribuição e fornecimento ágil de parafusos, porcas, arruelas e fixadores sob medida para todo o Brasil.",
   keywords: [
     "contato",
     "cotação de fixadores",

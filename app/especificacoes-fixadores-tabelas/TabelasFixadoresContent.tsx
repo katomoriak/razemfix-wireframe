@@ -309,7 +309,7 @@ export default function TabelasFixadoresContent() {
             </h2>
 
             <p className="text-base sm:text-lg font-bold text-zinc-900 leading-snug">
-              Somos fabricantes e distribuidores de elementos de fixação em geral.
+              Somos distribuidores de parafusos e elementos de fixação em geral.
             </p>
 
             <p className="text-sm sm:text-base text-zinc-650 leading-relaxed font-light">

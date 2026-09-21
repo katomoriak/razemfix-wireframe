@@ -88,7 +88,7 @@ export default function SobreNos() {
               “A especificação exata e a segurança que sua linha exige.”
             </p>
             <p className="text-base sm:text-lg text-zinc-650 leading-relaxed font-light">
-              Fundada com o compromisso de ser a melhor <strong className="font-semibold text-zinc-900">fabricante de parafusos</strong> e distribuidora de <strong className="font-semibold text-zinc-900">fixadores industriais</strong>, a Razemfix destaca-se no mercado pelo fornecimento de uma linha completa de produtos de alto padrão. Oferecemos <strong className="font-semibold text-zinc-900">parafusos de aço</strong>, <strong className="font-semibold text-zinc-900">parafusos inox</strong>, <strong className="font-semibold text-zinc-900">parafusos sextavados</strong> e <strong className="font-semibold text-zinc-900">fixadores de alta resistencia</strong> para indústrias de máquinas, equipamentos e engenharia estrutural.
+              Fundada com o compromisso de ser a melhor <strong className="font-semibold text-zinc-900">distribuidora de parafusos</strong> e <strong className="font-semibold text-zinc-900">fixadores industriais</strong>, a Razemfix destaca-se no mercado pelo fornecimento de uma linha completa de produtos de alto padrão. Oferecemos <strong className="font-semibold text-zinc-900">parafusos de aço</strong>, <strong className="font-semibold text-zinc-900">parafusos inox</strong>, <strong className="font-semibold text-zinc-900">parafusos sextavados</strong> e <strong className="font-semibold text-zinc-900">fixadores de alta resistencia</strong> para indústrias de máquinas, equipamentos e engenharia estrutural.
             </p>
           </div>
           

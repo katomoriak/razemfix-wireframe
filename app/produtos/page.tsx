@@ -124,7 +124,7 @@ function ProdutosContent() {
             Parafusos e Fixadores de Alta Qualidade
           </h1>
           <p className="text-sm text-zinc-600 max-w-2xl font-light">
-            Navegue por nossa linha completa como <strong className="font-semibold text-zinc-900">fabricante de parafusos</strong> e distribuidor de <strong className="font-semibold text-zinc-900">fixadores industriais</strong>. Fornecemos <strong className="font-semibold text-zinc-900">parafusos inox</strong>, <strong className="font-semibold text-zinc-900">parafusos de aço</strong>, <strong className="font-semibold text-zinc-900">parafusos sextavados</strong> e <strong className="font-semibold text-zinc-900">fixadores de alta resistencia</strong>. Selecione o item de interesse para cotação comercial rápida.
+            Navegue por nossa linha completa como <strong className="font-semibold text-zinc-900">distribuidora de parafusos</strong> e <strong className="font-semibold text-zinc-900">fixadores industriais</strong>. Fornecemos <strong className="font-semibold text-zinc-900">parafusos inox</strong>, <strong className="font-semibold text-zinc-900">parafusos de aço</strong>, <strong className="font-semibold text-zinc-900">parafusos sextavados</strong> e <strong className="font-semibold text-zinc-900">fixadores de alta resistencia</strong>. Selecione o item de interesse para cotação comercial rápida.
           </p>
           <div className="w-16 h-1.5 bg-accent-yellow rounded-full" />
         </div>

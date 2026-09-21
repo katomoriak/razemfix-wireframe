@@ -26,7 +26,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-sm text-zinc-700 leading-relaxed font-normal">
-              Referência na fabricação e distribuição de uma linha completa de elementos de fixação desenvolvidos para alta performance e máxima segurança industrial. Abastecemos indústrias, máquinas, equipamentos e engenharia estrutural.
+              Referência na distribuição e fornecimento de uma linha completa de elementos de fixação desenvolvidos para alta performance e máxima segurança industrial. Abastecemos indústrias, máquinas, equipamentos e engenharia estrutural.
             </p>
             <div className="pt-2">
               <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-accent-yellow/15 text-zinc-900 border border-accent-yellow/40">
