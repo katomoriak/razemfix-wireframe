@@ -31,6 +31,11 @@ try {
       console.error(`Erro: Arquivo de origem não encontrado: ${srcPath}`);
     }
   });
+  if (fs.existsSync(path.join(destDir, 'simbolo_favicon.png'))) {
+    fs.copyFileSync(path.join(destDir, 'simbolo_favicon.png'), path.join(__dirname, 'app', 'favicon.ico'));
+    fs.copyFileSync(path.join(destDir, 'simbolo_favicon.png'), path.join(destDir, 'favicon.ico'));
+    console.log('Favicon da Razemfix atualizado com sucesso em app/favicon.ico e public/favicon.ico!');
+  }
   console.log('Processo de cópia concluído.');
 } catch (error) {
   console.error('Ocorreu um erro durante a cópia:', error);

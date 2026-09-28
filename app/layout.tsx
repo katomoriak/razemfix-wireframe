@@ -135,6 +135,9 @@ export default function RootLayout({
       className={`${raleway.variable} h-full antialiased`}
     >
       <head>
+        <link rel="icon" href="/simbolo_favicon.png" type="image/png" sizes="any" />
+        <link rel="icon" href="/simbolo_favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/simbolo_favicon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
