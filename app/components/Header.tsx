@@ -26,6 +26,8 @@ export default function Header() {
 
   const getPageFriendlyName = (path: string) => {
     if (path === "/") return "Home";
+    if (path.startsWith("/parafusos")) return "Parafusos";
+    if (path.startsWith("/elementos-fixacao")) return "Elementos de Fixação";
     if (path.startsWith("/produtos")) return "Produtos";
     if (path.startsWith("/catalogo-online")) return "Catálogo Online PDF";
     if (path.startsWith("/especificacoes-fixadores")) return "Tabelas de Pesos de Fixadores";

@@ -20,18 +20,18 @@ import CatalogViewer from "./CatalogViewer";
 import TabelasFixadoresSection from "../components/TabelasFixadoresSection";
 
 export const metadata: Metadata = {
-  title: "Catálogo Técnico de Parafusos, Porcas e Arruelas PDF Online | Razemfix",
+  title: "Catálogo Técnico de Fixadores PDF Online | Razemfix",
   description:
-    "Consulte online o Catálogo Técnico Razemfix de parafusos sextavados, allen, inox, porcas, arruelas e fixadores industriais. Especificações completas, bitolas e normas DIN, ISO, ASTM e ABNT.",
+    "Consulte online ou baixe o catálogo de parafusos, porcas e arruelas industriais DIN, ISO e ASTM da Razemfix.",
   keywords:
     "catálogo parafusos pdf, catálogo fixadores industriais, tabela parafusos sextavados, catálogo porcas e arruelas, especificações técnicas fixadores, normas din iso astm parafusos, parafusos inox 304 316, chumbadores mecânicos, barras roscadas, razemfix catálogo",
   alternates: {
     canonical: "https://www.razemfix.com.br/catalogo-online",
   },
   openGraph: {
-    title: "Catálogo Técnico de Parafusos, Porcas e Arruelas PDF Online | Razemfix",
+    title: "Catálogo Técnico de Fixadores PDF Online | Razemfix",
     description:
-      "Visualize online ou baixe o Catálogo Técnico Completo de Fixadores Industriais Razemfix.",
+      "Consulte online ou baixe o catálogo de parafusos, porcas e arruelas industriais DIN, ISO e ASTM da Razemfix.",
     url: "https://www.razemfix.com.br/catalogo-online",
     images: [
       {
@@ -42,6 +42,13 @@ export const metadata: Metadata = {
       },
     ],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Catálogo Técnico de Fixadores PDF Online | Razemfix",
+    description:
+      "Consulte online ou baixe o catálogo de parafusos, porcas e arruelas industriais DIN, ISO e ASTM da Razemfix.",
+    images: ["/capa_catalogo.png"],
   },
 };
 
@@ -60,7 +67,7 @@ export default function CatalogoOnlinePage() {
         "@type": "DigitalDocument",
         name: "Catálogo Técnico de Parafusos, Porcas e Arruelas Razemfix",
         description:
-          "Catálogo técnico e comercial completo com especificações de parafusos sextavados, allen, porcas, arruelas, chumbadores e barras roscadas segundo normas DIN, ISO, ASTM e ABNT.",
+          "Catálogo de parafusos sextavados, allen, porcas, arruelas e barras roscadas conforme normas DIN, ISO e ASTM.",
         encodingFormat: "application/pdf",
         url: "https://www.razemfix.com.br/catalogo-parafusos-arruelas-porcas_razemfix.pdf",
         publisher: {

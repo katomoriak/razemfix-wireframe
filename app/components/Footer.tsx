@@ -44,6 +44,8 @@ export default function Footer() {
               {[
                 { name: "HOME", path: "/" },
                 { name: "PRODUTOS", path: "/produtos" },
+                { name: "PARAFUSOS INDUSTRIAIS", path: "/parafusos" },
+                { name: "ELEMENTOS DE FIXAÇÃO", path: "/elementos-fixacao" },
                 { name: "CATÁLOGO TÉCNICO (PDF)", path: "/catalogo-online" },
                 { name: "TABELAS DE PESOS (PDF)", path: "/especificacoes-fixadores-tabelas" },
                 { name: "SOBRE NÓS", path: "/sobre-nos" },
@@ -70,19 +72,21 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2">
               {[
-                "Parafusos Sextavados Industriais",
-                "Fixadores em Aço Inox 304 / 316",
-                "Parafusos Técnicos em Latão",
-                "Porcas Estruturais e Auto-Travantes",
-                "Arruelas de Alta Resistência Mecânica",
-                "Engenharia de Projetos Customizados",
+                { title: "Parafusos Inox 304 e 316", path: "/parafusos/parafusos-inox" },
+                { title: "Parafusos Sextavados (DIN 931/933)", path: "/parafusos/parafuso-sextavado.html" },
+                { title: "Parafusos Allen 12.9 e Inox", path: "/parafusos/parafuso-allen.html" },
+                { title: "Parafusos Especiais Sob Medida", path: "/parafusos/parafuso-especial.html" },
+                { title: "Porcas Sextavadas e Travantes", path: "/elementos-fixacao/porca-sextavada.html" },
+                { title: "Arruelas Lisas e de Pressão", path: "/elementos-fixacao/arruela-pressao-inox.html" },
+                { title: "Chumbadores Mecânicos e Químicos", path: "/elementos-fixacao/chumbadores.html" },
+                { title: "Barras Roscadas e Tirantes", path: "/elementos-fixacao/barras-roscadas.html" },
               ].map((solution) => (
-                <li key={solution}>
+                <li key={solution.title}>
                   <Link
-                    href="/produtos"
+                    href={solution.path}
                     className="text-xs text-zinc-700 hover:text-zinc-950 transition-colors duration-150 block font-semibold"
                   >
-                    {solution}
+                    {solution.title}
                   </Link>
                 </li>
               ))}
@@ -165,8 +169,20 @@ export default function Footer() {
 
         </div>
 
+        {/* Regional Coverage Bar */}
+        <div className="mt-12 pt-6 border-t border-zinc-300/80 text-xs text-zinc-650 space-y-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="font-extrabold text-zinc-900 uppercase tracking-wider text-[11px] flex items-center gap-1">
+              <MapPin className="h-3.5 w-3.5 text-yellow-600" /> Atendimento e Pronta-Entrega Regional:
+            </span>
+            <span className="text-zinc-600">
+              São Caetano do Sul • Santo André • São Bernardo do Campo • Diadema • Mauá • Ribeirão Pires • Rio Grande da Serra • Grande ABC • São Paulo (Capital) • Guarulhos e todo o Brasil.
+            </span>
+          </div>
+        </div>
+
         {/* Footer bottom bar */}
-        <div className="mt-12 pt-8 border-t border-zinc-300 flex flex-col md:flex-row items-center justify-between text-xs text-zinc-600 font-sans">
+        <div className="mt-6 pt-6 border-t border-zinc-200 flex flex-col md:flex-row items-center justify-between text-xs text-zinc-600 font-sans">
           <p>© {currentYear} Razemfix Fixadores Industriais. Todos os direitos reservados.</p>
           <div className="flex gap-4 mt-4 md:mt-0">
             <Link href="/privacidade" className="hover:text-zinc-950 transition-colors font-bold">Termos de Uso</Link>

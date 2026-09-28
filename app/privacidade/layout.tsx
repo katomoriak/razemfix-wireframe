@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade",
+  title: "Política de Privacidade | Razemfix",
   description:
     "Política de privacidade e proteção de dados da Razemfix Fixadores Industriais em conformidade com a LGPD.",
   alternates: {

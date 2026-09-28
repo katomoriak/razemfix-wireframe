@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Catálogo de Parafusos, Porcas e Fixadores Industriais",
+  title: "Catálogo de Parafusos e Fixadores | Razemfix",
   description:
-    "Explore a linha completa de fixadores industriais Razemfix: parafusos sextavados, allen, franceses, autobrocantes, porcas, arruelas, chumbadores mecânicos e químicos, rebites e barras roscadas.",
+    "Catálogo de parafusos, porcas, arruelas, barras e fixadores industriais no Grande ABC e SP com pronta-entrega.",
   keywords: [
     "parafusos",
     "parafusos inox",
@@ -21,18 +21,48 @@ export const metadata: Metadata = {
     "barras roscadas",
     "fixadores de alta resistência",
     "parafusos sob medida",
-    "parafusos personalizados",
+    "parafusos grande abc",
   ],
   alternates: {
     canonical: "https://www.razemfix.com.br/produtos",
   },
   openGraph: {
-    title: "Catálogo de Parafusos, Porcas e Fixadores Industriais | Razemfix",
+    title: "Catálogo de Parafusos e Fixadores | Razemfix",
     description:
-      "Linha completa de elementos de fixação industrial: parafusos, porcas, arruelas, chumbadores e barras roscadas em aço carbono e inox.",
+      "Linha completa de parafusos, porcas, arruelas e fixadores industriais no Grande ABC e SP com pronta-entrega.",
     url: "https://www.razemfix.com.br/produtos",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Catálogo de Parafusos e Fixadores | Razemfix",
+    description:
+      "Linha completa de parafusos, porcas, arruelas e fixadores industriais no Grande ABC e SP com pronta-entrega.",
+  },
+};
+
+const collectionSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.razemfix.com.br/produtos#webpage",
+      url: "https://www.razemfix.com.br/produtos",
+      name: "Catálogo de Parafusos e Fixadores Industriais Razemfix",
+      description:
+        "Catálogo completo com especificações técnicas e bitolas de parafusos, porcas, arruelas, barras e chumbadores.",
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.razemfix.com.br" },
+          { "@type": "ListItem", position: 2, name: "Produtos", item: "https://www.razemfix.com.br/produtos" },
+        ],
+      },
+      publisher: {
+        "@id": "https://www.razemfix.com.br/#organization",
+      },
+    },
+  ],
 };
 
 export default function ProdutosLayout({
@@ -40,5 +70,14 @@ export default function ProdutosLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema).replace(/</g, "\\u003c") }}
+      />
+      {children}
+    </>
+  );
 }
+
