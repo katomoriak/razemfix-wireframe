@@ -34,33 +34,35 @@ export default function ProductLandingTemplate({ item, currentPath }: ProductLan
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Product",
-        "@id": `${canonicalUrl}#product`,
-        name: item.h1,
+        "@type": "ItemPage",
+        "@id": `${canonicalUrl}#webpage`,
+        url: canonicalUrl,
+        name: item.title,
         description: item.description,
-        image: `https://www.razemfix.com.br${item.image}`,
-        category: item.categoryLabel,
-        brand: {
-          "@type": "Brand",
-          name: "Razemfix",
+        isPartOf: {
+          "@id": "https://www.razemfix.com.br/#website",
         },
-        manufacturer: {
-          "@type": "Organization",
-          "@id": "https://www.razemfix.com.br/#organization",
-          name: "Razemfix Fixadores Industriais",
+        breadcrumb: {
+          "@id": `${canonicalUrl}#breadcrumb`,
         },
-        offers: {
-          "@type": "AggregateOffer",
-          priceCurrency: "BRL",
-          price: "0.00",
-          priceValidUntil: "2027-12-31",
-          itemCondition: "https://schema.org/NewCondition",
-          availability: "https://schema.org/InStock",
-          seller: {
-            "@type": "LocalBusiness",
+        mainEntity: {
+          "@type": "Service",
+          "@id": `${canonicalUrl}#service`,
+          name: `Fornecimento e Distribuição de ${item.h1}`,
+          serviceType: "Distribuição e Venda no Atacado de Fixadores",
+          description: item.description,
+          image: `https://www.razemfix.com.br${item.image}`,
+          category: item.categoryLabel,
+          brand: {
+            "@type": "Brand",
+            name: "Razemfix",
+          },
+          provider: {
+            "@type": "WholesaleStore",
             "@id": "https://www.razemfix.com.br/#organization",
             name: "Razemfix Parafusos e Fixadores Industriais",
             telephone: "+55-11-4318-2878",
+            url: "https://www.razemfix.com.br",
             address: {
               "@type": "PostalAddress",
               streetAddress: "Rua Cavalheiro Ernesto Giuliano, 236",
@@ -69,10 +71,24 @@ export default function ProductLandingTemplate({ item, currentPath }: ProductLan
               postalCode: "09570-400",
               addressCountry: "BR",
             },
-            areaServed: CITIES_SERVED.map((city) => ({
-              "@type": "AdministrativeArea",
-              name: city,
-            })),
+          },
+          areaServed: CITIES_SERVED.map((city) => ({
+            "@type": "City",
+            name: city,
+          })),
+          potentialAction: {
+            "@type": "Action",
+            name: "Solicitar Cotação B2B",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: `https://wa.me/5511930736051?text=${encodeURIComponent(
+                `Olá! Gostaria de solicitar cotação para ${item.h1}.`
+              )}`,
+              actionPlatform: [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform",
+              ],
+            },
           },
         },
       },
