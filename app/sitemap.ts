@@ -68,42 +68,55 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const catalogRoutes: MetadataRoute.Sitemap = CATALOG_PAGES.flatMap((item) => {
-    // Both clean and .html legacy endpoints
-    const routes: MetadataRoute.Sitemap = [
-      {
-        url: `${baseUrl}/${item.category}/${item.slug}`,
-        lastModified,
-        changeFrequency: "weekly",
-        priority: 0.8,
-      },
-      {
-        url: `${baseUrl}/${item.category}/${item.slug}.html`,
-        lastModified,
-        changeFrequency: "weekly",
-        priority: 0.7,
-      },
-    ];
+  const seenUrls = new Set<string>();
+  const finalRoutes: MetadataRoute.Sitemap = [];
+
+  function addRoute(route: MetadataRoute.Sitemap[number]) {
+    if (!seenUrls.has(route.url)) {
+      seenUrls.add(route.url);
+      finalRoutes.push(route);
+    }
+  }
+
+  coreRoutes.forEach(addRoute);
+
+  CATALOG_PAGES.forEach((item) => {
+    const cleanSlug = item.slug.replace(/^\/+|\/+$/g, "").replace(/\.html$/, "");
+
+    addRoute({
+      url: `${baseUrl}/${item.category}/${cleanSlug}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    });
+
+    addRoute({
+      url: `${baseUrl}/${item.category}/${cleanSlug}.html`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    });
 
     if (item.aliases) {
-      item.aliases.forEach((alias) => {
-        routes.push({
-          url: `${baseUrl}/${item.category}/${alias}`,
+      item.aliases.forEach((rawAlias) => {
+        const cleanAlias = rawAlias.replace(/^\/+|\/+$/g, "").replace(/\.html$/, "");
+
+        addRoute({
+          url: `${baseUrl}/${item.category}/${cleanAlias}`,
           lastModified,
           changeFrequency: "weekly",
           priority: 0.6,
         });
-        routes.push({
-          url: `${baseUrl}/${item.category}/${alias}.html`,
+
+        addRoute({
+          url: `${baseUrl}/${item.category}/${cleanAlias}.html`,
           lastModified,
           changeFrequency: "weekly",
           priority: 0.6,
         });
       });
     }
-
-    return routes;
   });
 
-  return [...coreRoutes, ...catalogRoutes];
+  return finalRoutes;
 }
