@@ -81,11 +81,16 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
       { url: "/simbolo_favicon.svg", type: "image/svg+xml" },
-      { url: "/simbolo_favicon.png", type: "image/png" },
     ],
-    shortcut: "/simbolo_favicon.png",
-    apple: "/simbolo_favicon.png",
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
 };
 
@@ -278,9 +283,6 @@ export default function RootLayout({
       className={`${raleway.variable} h-full antialiased`}
     >
       <head>
-        <link rel="icon" href="/simbolo_favicon.png" type="image/png" sizes="any" />
-        <link rel="icon" href="/simbolo_favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/simbolo_favicon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
